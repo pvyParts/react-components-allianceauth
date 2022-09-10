@@ -1,13 +1,17 @@
 import React from 'react'
-import Button from "react-bootstrap"
+import { Button } from "react-bootstrap"
 
-const zKillButton = ({ character_name }) => {
+interface ZKillButtonProps extends Partial<HTMLElement>{
+  "character_name"?: string;
+}
+
+function ZKillButton (props: ZKillButtonProps): JSX.Element {
   return (
     <Button
       target="_blank"
       rel="noopener noreferrer"
       alt="zKillboard"
-      href={`https://zkillboard.com/search/${character_name}/`}
+      href={`https://zkillboard.com/search/${props.character_name}/`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -36,4 +40,4 @@ const zKillButton = ({ character_name }) => {
   );
 };
 
-export default zKillButton;
+export default ZKillButton

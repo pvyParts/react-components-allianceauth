@@ -1,2 +1,2 @@
-export { default as Button } from './lib/button'
-export { default as Card } from './lib/card'
+export { default as ZKillButton } from './lib/zKillButton'
+export { default as EveWhoButton } from './lib/eveWhoButton'

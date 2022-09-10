@@ -33,8 +33,10 @@
         "styleguide:serve": "styleguidist server"
     },
     "dependencies": {
+        "@types/react-bootstrap": "0.32.3",
         "classnames": "^2.3.1",
         "react": "^18.2.0",
+        "react-bootstrap": "0.32.3",
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
@@ -55,7 +57,6 @@
         "less-loader": "^11.0.0",
         "node-polyfill-webpack-plugin": "^1.1.4",
         "postcss": "^8.3.9",
-        "react-bootstrap": "0.33.1",
         "react-styleguidist": "^11.1.7",
         "rimraf": "^3.0.2",
         "rollup": "^2.77.3",
@@ -66,7 +67,8 @@
         "ts-loader": "^9.3.1",
         "ts-standard": "^11.0.0",
         "tsconfig-paths-webpack-plugin": "^3.5.1",
-        "typescript": "^4.7.4"
+        "typescript": "^4.7.4",
+        "webpack": "^5.74.0"
     },
     "ts-standard": {
         "ignore": [
