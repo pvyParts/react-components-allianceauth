@@ -24,12 +24,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate styleguide
-        run: npm run styleguide:build
+      - name: Generate storybook
+        run: yarn build-storybook
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4.3.4
         with:
           branch: gh-pages
-          folder: docs
+          folder: storybook-static
 
