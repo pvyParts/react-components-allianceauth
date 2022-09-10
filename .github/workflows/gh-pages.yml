@@ -21,8 +21,10 @@ jobs:
         with:
           node-version: 16.x
 
+      - run: npm install -g yarn
+
       - name: Install dependencies
-        run: npm ci
+        run: yarn install
 
       - name: Generate storybook
         run: yarn build-storybook
