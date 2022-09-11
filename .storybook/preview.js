@@ -15,7 +15,7 @@ export const decorators = [
     <>
       <link
         rel="stylesheet"
-        href="http://localhost:8000/static/allianceauth/css/themes/darkly/darkly.min.css"
+        href="https://cdn.jsdelivr.net/npm/bootswatch@3.4.1/darkly/bootstrap.min.css"
       ></link>
       <link
         rel="stylesheet"
