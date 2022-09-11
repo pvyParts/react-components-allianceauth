@@ -16,7 +16,6 @@
     "./dist"
   ],
   "scripts": {
-    "prepare": "husky install",
     "prebuild": "rimraf ./dist",
     "build": "rollup -c ./rollup.config.js",
     "storybook": "start-storybook -p 6006",
