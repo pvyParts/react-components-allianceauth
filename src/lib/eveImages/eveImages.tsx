@@ -1,11 +1,11 @@
 import React from "react";
 import { Image } from "react-bootstrap";
 
-type Sizes = 32|64|128|256|512
+type Sizes = 32 | 64 | 128 | 256 | 512;
 
-export interface CharacterPortraitProps extends Partial<HTMLElement>{
-  "character_id"?: number;
-  "size": Sizes;
+export interface CharacterPortraitProps extends Partial<HTMLElement> {
+  character_id?: number;
+  size: Sizes;
 }
 
 export const CharacterPortrait = (props: CharacterPortraitProps) => {
@@ -16,9 +16,9 @@ export const CharacterPortrait = (props: CharacterPortraitProps) => {
   );
 };
 
-export interface CorporationLogoProps extends Partial<HTMLElement>{
-  "corporation_id"?: number;
-  "size": Sizes;
+export interface CorporationLogoProps extends Partial<HTMLElement> {
+  corporation_id?: number;
+  size: Sizes;
 }
 
 export const CorporationLogo = (props: CorporationLogoProps) => {
@@ -29,9 +29,9 @@ export const CorporationLogo = (props: CorporationLogoProps) => {
   );
 };
 
-export interface AllianceLogoProps extends Partial<HTMLElement>{
-  "alliance_id"?: number;
-  "size": Sizes;
+export interface AllianceLogoProps extends Partial<HTMLElement> {
+  alliance_id?: number;
+  size: Sizes;
 }
 
 export const AllianceLogo = (props: AllianceLogoProps) => {
@@ -42,15 +42,17 @@ export const AllianceLogo = (props: AllianceLogoProps) => {
   );
 };
 
-export interface TypeIconProps extends Partial<HTMLElement>{
-  "type_id"?: number;
-  "size": Sizes;
+export interface TypeIconProps extends Partial<HTMLElement> {
+  type_id?: number;
+  size: Sizes;
 }
 
 export const TypeIcon = (props: TypeIconProps) => {
   return (
     <Image
-      src={`https://images.evetech.net/types/${props.type_id}/${props.size > 64?"render":"icon"}?size=${props.size}`}
+      src={`https://images.evetech.net/types/${props.type_id}/${
+        props.size > 64 ? "render" : "icon"
+      }?size=${props.size}`}
     />
   );
 };

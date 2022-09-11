@@ -87,8 +87,7 @@
   "private": true,
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "npx prettier --write",
-      "npx eslint"
+      "npx prettier --write"
     ]
   }
 }

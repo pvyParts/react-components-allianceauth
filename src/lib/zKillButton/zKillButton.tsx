@@ -1,11 +1,11 @@
-import React from 'react'
-import { Button } from "react-bootstrap"
+import React from "react";
+import { Button } from "react-bootstrap";
 
-interface ZKillButtonProps extends Partial<HTMLElement>{
-  "character_name"?: string;
+interface ZKillButtonProps extends Partial<HTMLElement> {
+  character_name?: string;
 }
 
-function ZKillButton (props: ZKillButtonProps): JSX.Element {
+function ZKillButton(props: ZKillButtonProps): JSX.Element {
   return (
     <Button
       target="_blank"
@@ -38,6 +38,6 @@ function ZKillButton (props: ZKillButtonProps): JSX.Element {
       </svg>
     </Button>
   );
-};
+}
 
-export default ZKillButton
+export default ZKillButton;
