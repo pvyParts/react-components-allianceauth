@@ -15,13 +15,34 @@ const Template: ComponentStory<typeof CharacterAllegiancePortrait> = (args) => (
   <CharacterAllegiancePortrait {...args} />
 );
 
-export const Primary = Template.bind({});
+export const Alliance = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
+Alliance.args = {
   character: {
     character_id: 755166922,
     corporation_id: 98628563,
     alliance_id: 1354830081,
+  },
+  size: 256,
+};
+
+export const Faction = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Faction.args = {
+  character: {
+    character_id: 755166922,
+    corporation_id: 1000179,
+    faction_id: 500003,
+  },
+  size: 256,
+};
+
+export const CorpOnly = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+CorpOnly.args = {
+  character: {
+    character_id: 755166922,
+    corporation_id: 98628563,
   },
   size: 256,
 };

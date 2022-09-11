@@ -1,2 +1,2 @@
-export { default } from './zKillButton';
+export { default } from "./zKillButton";
 //# sourceMappingURL=index.d.ts.map

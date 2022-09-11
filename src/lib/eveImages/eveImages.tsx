@@ -1,4 +1,3 @@
-import { stringify } from "querystring";
 import React from "react";
 import { Image } from "react-bootstrap";
 
@@ -83,6 +82,7 @@ export interface PortraitProps extends Partial<HTMLElement> {
     character_id: number;
     corporation_id: number;
     alliance_id?: number;
+    faction_id?: number;
   };
   size: number;
   rounded_images?: boolean;
@@ -119,8 +119,8 @@ export const CharacterAllegiancePortrait = (props: PortraitProps) => {
         corporation_id={props.character.corporation_id}
         size={256}
       />
-      {props.character.alliance_id && (
-        <AllianceLogo
+      {props.character.faction_id ? (
+        <CorporationLogo
           style={{
             position: "absolute",
             bottom: "0",
@@ -129,9 +129,24 @@ export const CharacterAllegiancePortrait = (props: PortraitProps) => {
           }}
           height={props.size / 4}
           width={props.size / 4}
-          alliance_id={props.character.alliance_id}
+          corporation_id={props.character.faction_id}
           size={256}
         />
+      ) : (
+        props.character.alliance_id && (
+          <AllianceLogo
+            style={{
+              position: "absolute",
+              bottom: "0",
+              right: "0",
+              borderRadius: border,
+            }}
+            height={props.size / 4}
+            width={props.size / 4}
+            alliance_id={props.character.alliance_id}
+            size={256}
+          />
+        )
       )}
     </div>
   );

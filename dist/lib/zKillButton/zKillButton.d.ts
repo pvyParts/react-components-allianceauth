@@ -1,6 +1,6 @@
 /// <reference types="react" />
 interface ZKillButtonProps extends Partial<HTMLElement> {
-    "character_name"?: string;
+    character_name?: string;
 }
 declare function ZKillButton(props: ZKillButtonProps): JSX.Element;
 export default ZKillButton;
