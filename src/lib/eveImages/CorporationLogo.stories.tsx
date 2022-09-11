@@ -5,7 +5,7 @@ import { CorporationLogo } from "./eveImages";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Example/CorporationLogo",
+  title: "Images/CorporationLogo",
   component: CorporationLogo,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 } as ComponentMeta<typeof CorporationLogo>;
@@ -20,4 +20,6 @@ export const Primary = Template.bind({});
 Primary.args = {
   corporation_id: 98628563,
   size: 256,
+  height: 256,
+  width: 256,
 };
