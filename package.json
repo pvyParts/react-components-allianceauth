@@ -16,6 +16,7 @@
     "./dist"
   ],
   "scripts": {
+    "prepare": "husky install",
     "prebuild": "rimraf ./dist",
     "build": "rollup -c ./rollup.config.js",
     "storybook": "start-storybook -p 6006",
@@ -87,7 +88,7 @@
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "npx prettier --write",
-      "npx eslint --fix"
+      "npx eslint"
     ]
   }
 }

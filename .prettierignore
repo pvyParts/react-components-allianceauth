@@ -1,0 +1,10 @@
+# Ignore artifacts:
+storybook-static/
+dist/
+.storybook/
+.husky/
+node_modules/
+.github/
+README.md
+# Ignore all HTML files:
+*.html
