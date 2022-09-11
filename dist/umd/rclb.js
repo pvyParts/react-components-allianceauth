@@ -28,7 +28,24 @@
             React__default["default"].createElement("i", { className: "fas fa-user" })));
     }
 
+    const CharacterPortrait = (props) => {
+        return (React__default["default"].createElement(reactBootstrap.Image, { src: `https://images.evetech.net/characters/${props.character_id}/portrait?size=${props.size}` }));
+    };
+    const CorporationLogo = (props) => {
+        return (React__default["default"].createElement(reactBootstrap.Image, { src: `https://images.evetech.net/corporations/${props.corporation_id}/logo?size=${props.size}` }));
+    };
+    const AllianceLogo = (props) => {
+        return (React__default["default"].createElement(reactBootstrap.Image, { src: `https://images.evetech.net/alliances/${props.alliance_id}/logo?size=${props.size}` }));
+    };
+    const TypeIcon = (props) => {
+        return (React__default["default"].createElement(reactBootstrap.Image, { src: `https://images.evetech.net/types/${props.type_id}/${props.size > 64 ? "render" : "icon"}?size=${props.size}` }));
+    };
+
+    exports.AllianceLogo = AllianceLogo;
+    exports.CharacterPortrait = CharacterPortrait;
+    exports.CorporationLogo = CorporationLogo;
     exports.EveWhoButton = EveWhoButton;
+    exports.TypeIcon = TypeIcon;
     exports.ZKillButton = ZKillButton;
 
     Object.defineProperty(exports, '__esModule', { value: true });

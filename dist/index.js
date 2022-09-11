@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 
 function ZKillButton(props) {
     return (React.createElement(Button, { target: "_blank", rel: "noopener noreferrer", alt: "zKillboard", href: `https://zkillboard.com/search/${props.character_name}/` },
@@ -21,5 +21,18 @@ function EveWhoButton(props) {
         React.createElement("i", { className: "fas fa-user" })));
 }
 
-export { EveWhoButton, ZKillButton };
+const CharacterPortrait = (props) => {
+    return (React.createElement(Image, { src: `https://images.evetech.net/characters/${props.character_id}/portrait?size=${props.size}` }));
+};
+const CorporationLogo = (props) => {
+    return (React.createElement(Image, { src: `https://images.evetech.net/corporations/${props.corporation_id}/logo?size=${props.size}` }));
+};
+const AllianceLogo = (props) => {
+    return (React.createElement(Image, { src: `https://images.evetech.net/alliances/${props.alliance_id}/logo?size=${props.size}` }));
+};
+const TypeIcon = (props) => {
+    return (React.createElement(Image, { src: `https://images.evetech.net/types/${props.type_id}/${props.size > 64 ? "render" : "icon"}?size=${props.size}` }));
+};
+
+export { AllianceLogo, CharacterPortrait, CorporationLogo, EveWhoButton, TypeIcon, ZKillButton };
 //# sourceMappingURL=index.js.map
