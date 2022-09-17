@@ -314,7 +314,7 @@ function Filter({
       typeof firstValue === "number"
         ? []
         : Array.from(column.getFacetedUniqueValues().keys()).sort(),
-    [column.getFacetedUniqueValues()]
+    [column.getFacetedUniqueValues(), firstValue]
   );
 
   const selectOptions = sortedUniqueValues

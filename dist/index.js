@@ -201,7 +201,7 @@ function Filter({ column, table, }) {
         .flatRows[0]?.getValue(column.id);
     const sortedUniqueValues = React.useMemo(() => typeof firstValue === "number"
         ? []
-        : Array.from(column.getFacetedUniqueValues().keys()).sort(), [column.getFacetedUniqueValues()]);
+        : Array.from(column.getFacetedUniqueValues().keys()).sort(), [column.getFacetedUniqueValues(), firstValue]);
     const selectOptions = sortedUniqueValues
         .slice(0, 50)
         .reduce((previousValue, currentValue) => {
