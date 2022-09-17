@@ -1,6 +1,6 @@
-import { FilterFn, SortingFn } from '@tanstack/react-table';
-import { RankingInfo } from '@tanstack/match-sorter-utils';
-declare module '@tanstack/table-core' {
+import { FilterFn, SortingFn } from "@tanstack/react-table";
+import { RankingInfo } from "@tanstack/match-sorter-utils";
+declare module "@tanstack/table-core" {
     interface FilterFns {
         fuzzy: FilterFn<unknown>;
     }

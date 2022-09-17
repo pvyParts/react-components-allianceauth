@@ -69,7 +69,7 @@ export default [
         extract: true,
         minimize: true,
         modules: true,
-        sourceMap: false,
+        sourceMap: true,
         use: {
           less: { javascriptEnabled: true },
         },
