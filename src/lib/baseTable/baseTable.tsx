@@ -1,12 +1,5 @@
-import React from "react";
-import {} from "react-bootstrap";
-import {
-  useTable,
-  useFilters,
-  usePagination,
-  useSortBy,
-  useExpanded,
-} from "react-table";
+import React, { useState } from "react";
+
 import {
   Button,
   Tooltip,
@@ -17,78 +10,40 @@ import {
   MenuItem,
   SplitButton,
   Table,
+  Popover,
 } from "react-bootstrap";
+
+import {
+  Column,
+  Table as ReactTable,
+  PaginationState,
+  useReactTable,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  flexRender,
+  SortingState,
+  getFacetedRowModel,
+  getFacetedMinMaxValues,
+  getFacetedUniqueValues,
+  ColumnDef,
+  FilterFns,
+} from "@tanstack/react-table";
+
 import { ErrorLoader, PanelLoader } from "../loaders/loaders";
+
 import "./BaseTable.css";
+import CreatableSelect from "react-select";
+import ReactSelect from "react-select";
+import { colourStyles } from "./baseTableStyles";
 
-import { defaultColumnFilter } from "./baseTableFilters";
-
-export function SubRows({
-  row,
-  rowProps,
-  visibleColumns,
-  data,
-  error,
-  isLoading,
-}) {
-  if (isLoading) {
-    return (
-      <tr>
-        <td />
-        <td colSpan={visibleColumns.length - 1}>Loading...</td>
-      </tr>
-    );
-  }
-  if (error) {
-    return (
-      <tr>
-        <td />
-        <td colSpan={visibleColumns.length - 1}>Unable to Fetch from API!</td>
-      </tr>
-    );
-  }
-
-  if (data.length === 0) {
-    return (
-      <tr>
-        <td />
-        <td colSpan={visibleColumns.length - 1}>Empty!</td>
-      </tr>
-    );
-  }
-
-  // error handling here :)
-
-  return (
-    <>
-      {data.map((x, i) => {
-        return (
-          <tr {...rowProps} key={`${rowProps.key}-expanded-${i}`}>
-            {row.cells.map((cell) => {
-              return (
-                <td {...cell.getCellProps()}>
-                  {cell.render(cell.column.SubCell ? "SubCell" : "Cell", {
-                    value: cell.column.accessor && cell.column.accessor(x, i),
-                    row: { ...row, original: x },
-                  })}
-                </td>
-              );
-            })}
-          </tr>
-        );
-      })}
-    </>
-  );
-}
-
-function MyTooltip({ message }) {
+function MyTooltip(message: string) {
   return <Tooltip id="character_tooltip">{message}</Tooltip>;
 }
 
-const defaultPropGetter = () => ({});
-
-function strToKey(keyString, ob) {
-  return keyString.split(".").reduce(function (p, prop) {
+function strToKey(keyString: string, ob: object) {
+  return keyString.split(".").reduce(function (p: any, prop: any) {
     return p[prop];
   }, ob);
 }
@@ -96,152 +51,147 @@ function strToKey(keyString, ob) {
 export interface BaseTableProps extends Partial<HTMLElement> {
   isLoading: boolean;
   isFetching: boolean;
+  debugTable: boolean;
   data: any;
   error: boolean;
-  columns: any;
+  columns: ColumnDef<any, any>;
   asyncExpandFunction?: any;
-  getRowProps?: any;
-  initialState?: any;
 }
-const BaseTable = (
-  props: BaseTableProps,
-  { getRowProps = defaultPropGetter }
-) => {
-  if (props.isLoading)
+
+const BaseTable = ({
+  isLoading,
+  isFetching,
+  debugTable,
+  data,
+  error,
+  columns,
+  asyncExpandFunction,
+}: BaseTableProps) => {
+  if (isLoading)
     return <PanelLoader title="Loading Data" message="Please Wait" />;
 
-  if (props.error)
+  if (error)
     return (
       <ErrorLoader
         title={"Error Loading from API"}
         message={"Try Again Later"}
       />
     );
+  return (
+    <_baseTable
+      {...{
+        data,
+        columns,
+        isFetching,
+        debugTable,
+      }}
+    />
+  );
+};
 
-  const defaultColumn = React.useMemo(
-    () => ({
-      // Let's set up our default Filter UI
-      Filter: defaultColumnFilter,
-    }),
-    []
-  );
+function _baseTable({
+  data,
+  columns,
+  isFetching,
+  debugTable = false,
+}: {
+  data: any[];
+  columns: ColumnDef<any>[];
+}) {
+  const table = useReactTable({
+    data,
+    columns,
+    // Pipeline
+    getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
+    getFacetedMinMaxValues: getFacetedMinMaxValues(),
+    //
+    debugTable: debugTable,
+    filterFns: FilterFns,
+  });
 
-  const filterTypes = React.useMemo(
-    () => ({
-      text: (rows, ids, filterValue) => {
-        return rows.filter((row) => {
-          return ids.some((id) => {
-            if (!filterValue) {
-              return true;
-            } else {
-              let rowValue = row.values[id];
-              if (typeof rowValue === "object") {
-                rowValue = rowValue.name;
-              }
-              if (row.hasOwnProperty("originalSubRows")) {
-                rowValue += row.originalSubRows.reduce((p, r) => {
-                  return (p += " " + strToKey(id, r));
-                }, "");
-              }
-              return rowValue
-                ? rowValue.toLowerCase().includes(filterValue.toLowerCase())
-                : false;
-            }
-          });
-        });
-      },
-    }),
-    []
-  );
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    page,
-    prepareRow,
-    canPreviousPage,
-    canNextPage,
-    pageOptions,
-    pageCount,
-    gotoPage,
-    nextPage,
-    previousPage,
-    setPageSize,
-    visibleColumns,
-    state: { pageIndex, pageSize },
-  } = useTable(
-    {
-      defaultColumn,
-      filterTypes,
-      initialState: props.initialState,
-      columns: props.columns,
-      data: props.data,
-    },
-    useFilters,
-    useSortBy,
-    useExpanded,
-    usePagination
-  );
   return (
     <>
-      <Table striped>
-        <thead {...getTableProps()}>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                  {column.render("Header")}
-                  {/* Add a sort direction indicator */}
-                  <span className="pull-right">
-                    {column.canSort ? (
-                      column.isSorted ? (
-                        column.isSortedDesc ? (
-                          <Glyphicon glyph="sort-by-attributes-alt" />
-                        ) : (
-                          <Glyphicon glyph="sort-by-attributes" />
-                        )
+      <Table>
+        <thead>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <>
+              <tr key={`name-${headerGroup.id}`}>
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <th key={header.id} colSpan={header.colSpan}>
+                      {header.isPlaceholder ? null : (
+                        <div
+                          {...{
+                            className: header.column.getCanSort()
+                              ? "cursor-pointer select-none"
+                              : "",
+                            onClick: header.column.getToggleSortingHandler(),
+                          }}
+                        >
+                          {flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                          {{
+                            asc: (
+                              <Glyphicon
+                                className="pull-right"
+                                glyph="sort-by-attributes"
+                              />
+                            ),
+                            desc: (
+                              <Glyphicon
+                                className="pull-right"
+                                glyph="sort-by-attributes-alt"
+                              />
+                            ),
+                          }[header.column.getIsSorted() as string] ?? (
+                            <Glyphicon className="pull-right" glyph="sort" />
+                          )}
+                        </div>
+                      )}
+                    </th>
+                  );
+                })}
+              </tr>
+              <tr key={`filter-${headerGroup.id}`}>
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <th key={header.id} colSpan={header.colSpan}>
+                      {header.column.getCanFilter() ? (
+                        <div>
+                          <Filter column={header.column} table={table} />
+                        </div>
                       ) : (
-                        <Glyphicon glyph="sort" />
-                      )
-                    ) : (
-                      ""
-                    )}
-                  </span>
-                </th>
-              ))}
-            </tr>
-          ))}
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>
-                  <div>{column.canFilter ? column.render("Filter") : null}</div>
-                </th>
-              ))}
-            </tr>
+                        ""
+                      )}
+                    </th>
+                  );
+                })}
+              </tr>
+            </>
           ))}
         </thead>
-        <tbody {...getTableBodyProps()}>
-          {page.map((row, i) => {
-            prepareRow(row);
-            const rowProps = getRowProps(row);
+        <tbody>
+          {table.getRowModel().rows.map((row) => {
             return (
-              <>
-                <tr {...row.getRowProps(rowProps)}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <td
-                        style={{ verticalAlign: "middle" }}
-                        {...cell.getCellProps()}
-                      >
-                        {cell.render("Cell")}
-                      </td>
-                    );
-                  })}
-                </tr>
-                {row.isExpanded &&
-                  asyncExpandFunction({ row, rowProps, visibleColumns })}
-              </>
+              <tr key={row.id}>
+                {row.getVisibleCells().map((cell) => {
+                  return (
+                    <td key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
             );
           })}
         </tbody>
@@ -251,29 +201,29 @@ const BaseTable = (
           <ButtonGroup>
             <Button
               bsStyle="success"
-              onClick={() => gotoPage(0)}
-              disabled={!canPreviousPage}
+              onClick={() => table.setPageIndex(0)}
+              disabled={!table.getCanPreviousPage()}
             >
               <Glyphicon glyph="step-backward" />
             </Button>{" "}
             <Button
               bsStyle="success"
-              onClick={() => previousPage()}
-              disabled={!canPreviousPage}
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
             >
               <Glyphicon glyph="triangle-left" />
             </Button>{" "}
             <Button
               bsStyle="success"
-              onClick={() => nextPage()}
-              disabled={!canNextPage}
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
             >
               <Glyphicon glyph="triangle-right" />
             </Button>{" "}
             <Button
               bsStyle="success"
-              onClick={() => gotoPage(pageCount - 1)}
-              disabled={!canNextPage}
+              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+              disabled={!table.getCanNextPage()}
             >
               <Glyphicon glyph="step-forward" />
             </Button>
@@ -285,9 +235,9 @@ const BaseTable = (
             <SplitButton
               id="pageSizeDropdown"
               bsStyle="success"
-              title={pageSize}
+              title={table.getState().pagination.pageSize}
               onSelect={(e) => {
-                setPageSize(Number(e));
+                table.setPageSize(Number(e.target.value));
               }}
             >
               {[10, 50, 100, 1000000].map((_pageSize) => (
@@ -309,24 +259,15 @@ const BaseTable = (
           <Button active bsStyle="info">
             {
               <>
-                {pageOptions.length > 0 ? (
-                  <>
-                    Page{" "}
-                    <strong>
-                      {pageIndex + 1} of {pageOptions.length}
-                    </strong>
-                  </>
-                ) : (
-                  <>
-                    Page <strong>- of -</strong>
-                  </>
-                )}
+                {table.getState().pagination.pageIndex + 1} of{" "}
+                {table.getPageCount()}
               </>
             }
           </Button>{" "}
-          {props.isFetching ? (
+          {isFetching ? (
             <OverlayTrigger
               placement="bottom"
+              trigger="focus"
               overlay={MyTooltip({ message: "Refreshing Data" })}
             >
               <Button bsStyle="info">
@@ -339,9 +280,8 @@ const BaseTable = (
           ) : (
             <OverlayTrigger
               placement="bottom"
-              overlay={MyTooltip({
-                message: "Data Loaded: " + new Date().toLocaleString(),
-              })}
+              trigger="focus"
+              overlay={MyTooltip("Data Loaded: " + new Date().toLocaleString())}
             >
               <Button bsStyle="info">
                 <Glyphicon glyph="ok" />
@@ -350,12 +290,116 @@ const BaseTable = (
           )}
         </ButtonGroup>
       </div>
+      {debugTable && (
+        <div className="col-xs-12">
+          <div>{table.getRowModel().rows.length} Rows</div>
+          <pre>{JSON.stringify(table.getState(), null, 2)}</pre>
+        </div>
+      )}
     </>
   );
-};
+}
+function Filter({
+  column,
+  table,
+}: {
+  column: Column<any, any>;
+  table: ReactTable<any>;
+}) {
+  const [input, setInput] = useState("");
+
+  const sortedUniqueValues = React.useMemo(
+    () =>
+      typeof firstValue === "number"
+        ? []
+        : Array.from(column.getFacetedUniqueValues().keys()).sort(),
+    [column.getFacetedUniqueValues()]
+  );
+
+  const selectOptions = sortedUniqueValues
+    .slice(0, 50)
+    .reduce((previousValue: Array<any>, currentValue: any) => {
+      previousValue.push({ value: currentValue, label: currentValue });
+      return previousValue;
+    }, []);
+  const firstValue = table
+    .getPreFilteredRowModel()
+    .flatRows[0]?.getValue(column.id);
+
+  const columnFilterValue = column.getFilterValue();
+
+  const popoverNumber = (
+    <Popover id="popover-positioned-top">
+      <input
+        type="number"
+        value={(columnFilterValue as [number, number])?.[0] ?? ""}
+        onChange={(e) =>
+          column.setFilterValue((old: [number, number]) => [
+            e.target.value,
+            old?.[1],
+          ])
+        }
+        placeholder={`Min`}
+        className="form-control"
+      />
+      <p className="text-center">to</p>
+      <input
+        type="number"
+        value={(columnFilterValue as [number, number])?.[1] ?? ""}
+        onChange={(e) =>
+          column.setFilterValue((old: [number, number]) => [
+            old?.[0],
+            e.target.value,
+          ])
+        }
+        placeholder={`Max`}
+        className="form-control"
+      />
+    </Popover>
+  );
+
+  return typeof firstValue === "number" ? (
+    <OverlayTrigger trigger="click" placement="bottom" overlay={popoverNumber}>
+      <ButtonGroup style={{ display: "flex" }}>
+        <Button className="filter-btn" bsStyle="primary" bsSize="small">
+          {`Range`}
+        </Button>
+        <Button className="filter-toggle" bsStyle="primary" bsSize="small">
+          <svg
+            height="20"
+            width="20"
+            viewBox="0 0 20 20"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path>
+          </svg>
+        </Button>
+      </ButtonGroup>
+    </OverlayTrigger>
+  ) : (
+    <ReactSelect
+      styles={colourStyles}
+      type="text"
+      isClearable={true}
+      onChange={(value, action) => {
+        setInput("");
+        column.setFilterValue(value ? value.value : "");
+      }}
+      inputValue={input} // allows you continue where you left off
+      onInputChange={(value, action) => {
+        if (action.action === "input-change") {
+          setInput(value);
+          column.setFilterValue(value);
+        }
+      }}
+      placeholder={`Search...`}
+      className=""
+      options={selectOptions}
+    />
+  );
+}
 
 // export all the base table modules
 
 export { BaseTable }; // Export the table
-export { selectColumnFilter, textColumnFilter } from "./baseTableFilters"; // Export the filters
-export { colourStyles } from "./baseTableStyles"; // export the styles

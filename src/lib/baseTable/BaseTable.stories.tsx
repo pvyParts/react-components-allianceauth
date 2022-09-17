@@ -11,71 +11,52 @@ export default {
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 } as ComponentMeta<typeof BaseTable>;
 
+let data = [];
+for (let i = 0; i < 20; i++) {
+  data.push({
+    name: faker.name.fullName(),
+    email: faker.internet.email(),
+    postCode: faker.address.zipCode(),
+    city: faker.address.cityName(),
+    country: faker.address.country(),
+    phoneNumber: faker.datatype.number(99999),
+    favouriteQuote: faker.lorem.sentence(),
+  });
+}
+
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof BaseTable> = (args) => {
   const cols = React.useMemo(
     () => [
       {
-        Header: "Name",
-        accessor: "name",
-        Filter: textColumnFilter,
+        header: "Name",
+        accessorKey: "name",
+      },
+      {
+        header: "Email",
+        accessorKey: "email",
+      },
+      {
+        header: "Country",
+        accessorKey: "country",
         filter: "text",
       },
       {
-        Header: "Email",
-        accessor: "email",
-        Filter: textColumnFilter,
-        filter: "text",
-      },
-      {
-        Header: "Post Code",
-        accessor: "postCode",
+        header: "Number",
+        accessorKey: "phoneNumber",
         disableSortBy: true,
       },
       {
-        Header: "City",
-        accessor: "city",
-        Filter: selectColumnFilter,
-        filter: "text",
-      },
-      {
-        Header: "Country",
-        accessor: "country",
-        Filter: selectColumnFilter,
-        filter: "text",
-      },
-      {
-        Header: "phoneNumber",
-        accessor: "phoneNumber",
+        header: "Quote",
+        accessorKey: "favouriteQuote",
+        enableColumnFilter: false,
         disableSortBy: true,
-      },
-      {
-        Header: "Quote",
-        accessor: "favouriteQuote",
-        Filter: textColumnFilter,
-        filter: "text",
       },
     ],
     []
   );
-  let data = [];
-  for (let i = 0; i < 20; i++) {
-    data.push({
-      name: faker.name.fullName(),
-      email: faker.internet.email(),
-      postCode: faker.address.zipCode(),
-      city: faker.address.cityName(),
-      country: faker.address.country(),
-      phoneNumber: faker.phone.number(),
-      favouriteQuote: faker.lorem.sentence(),
-    });
-  }
   delete args.data;
   delete args.columns;
-  if (args.error) {
-    data = null;
-  }
-  console.log(args);
   return <BaseTable columns={cols} data={data} {...args} />;
 };
 
@@ -84,6 +65,7 @@ export const Default = Template.bind({});
 Default.args = {
   isLoading: false,
   isFetching: false,
+  debugTable: false,
   error: false,
   initialState: {
     pageSize: 10,

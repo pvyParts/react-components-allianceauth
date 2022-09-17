@@ -1,13 +1,13 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-bootstrap'), require('react-table'), require('react-select')) :
-    typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-bootstrap', 'react-table', 'react-select'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.rclb = {}, global.React, global.reactBootstrap, global.reactTable, global.Select));
-})(this, (function (exports, React, reactBootstrap, reactTable, Select) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-bootstrap'), require('@tanstack/react-table'), require('react-select')) :
+    typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-bootstrap', '@tanstack/react-table', 'react-select'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.rclb = {}, global.React, global.reactBootstrap, global.reactTable, global.ReactSelect));
+})(this, (function (exports, React, reactBootstrap, reactTable, ReactSelect) { 'use strict';
 
     function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
     var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
-    var Select__default = /*#__PURE__*/_interopDefaultLegacy(Select);
+    var ReactSelect__default = /*#__PURE__*/_interopDefaultLegacy(ReactSelect);
 
     function ZKillButton(props) {
         return (React__default["default"].createElement(reactBootstrap.Button, { target: "_blank", rel: "noopener noreferrer", alt: "zKillboard", href: `https://zkillboard.com/search/${props.character_name}/` },
@@ -69,7 +69,7 @@
       }
     }
 
-    var css_248z$1 = ".Loader_flex-container__1Xl3U {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  align-content: center;\n  flex-wrap: wrap;\n  flex-direction: row;\n}\n\n.Loader_spinner-size__vW5Ew {\n  height: 30px;\n  width: 30px;\n  margin: 200px;\n}\n\n@keyframes Loader_shake__14AEh {\n  10%,\n  90% {\n    transform: translate3d(-1px, 0, 0);\n  }\n\n  20%,\n  80% {\n    transform: translate3d(2px, 0, 0);\n  }\n\n  30%,\n  50%,\n  70% {\n    transform: translate3d(-4px, 0, 0);\n  }\n\n  40%,\n  60% {\n    transform: translate3d(4px, 0, 0);\n  }\n}\n\n.Loader_error-anim__2JL9a {\n  animation: Loader_shake__14AEh 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;\n  animation-iteration-count: infinite;\n}\n\n@keyframes Loader_updown__3sxIj {\n  10%,\n  90% {\n    transform: translate3d(0, -2px, 0);\n  }\n\n  20%,\n  80% {\n    transform: translate3d(0, 2px, 0);\n  }\n\n  30%,\n  50%,\n  70% {\n    transform: translate3d(0, -4px, 0);\n  }\n\n  40%,\n  60% {\n    transform: translate3d(0, 4px, 0);\n  }\n}\n\n.Loader_arrow-anim__NKGze {\n  animation: Loader_updown__3sxIj 5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;\n  animation-iteration-count: infinite;\n}\n\n.Loader_lds-dual-ring__3Y0gx {\n  display: inline-block;\n  width: 80px;\n  height: 80px;\n}\n.Loader_lds-dual-ring__3Y0gx:after {\n  content: \" \";\n  display: block;\n  width: 64px;\n  height: 64px;\n  margin: 8px;\n  border-radius: 50%;\n  border: 6px solid #fff;\n  border-color: #fff transparent #fff transparent;\n  animation: Loader_lds-dual-ring__3Y0gx 1.2s linear infinite;\n}\n@keyframes Loader_lds-dual-ring__3Y0gx {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkxvYWRlci5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLHVCQUF1QjtFQUN2QixxQkFBcUI7RUFDckIsZUFBZTtFQUNmLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLFlBQVk7RUFDWixXQUFXO0VBQ1gsYUFBYTtBQUNmOztBQUVBO0VBQ0U7O0lBRUUsa0NBQWtDO0VBQ3BDOztFQUVBOztJQUVFLGlDQUFpQztFQUNuQzs7RUFFQTs7O0lBR0Usa0NBQWtDO0VBQ3BDOztFQUVBOztJQUVFLGlDQUFpQztFQUNuQztBQUNGOztBQUVBO0VBQ0UsOEVBQWdFO0VBQ2hFLG1DQUFtQztBQUNyQzs7QUFFQTtFQUNFOztJQUVFLGtDQUFrQztFQUNwQzs7RUFFQTs7SUFFRSxpQ0FBaUM7RUFDbkM7O0VBRUE7OztJQUdFLGtDQUFrQztFQUNwQzs7RUFFQTs7SUFFRSxpQ0FBaUM7RUFDbkM7QUFDRjs7QUFFQTtFQUNFLDRFQUE4RDtFQUM5RCxtQ0FBbUM7QUFDckM7O0FBRUE7RUFDRSxxQkFBcUI7RUFDckIsV0FBVztFQUNYLFlBQVk7QUFDZDtBQUNBO0VBQ0UsWUFBWTtFQUNaLGNBQWM7RUFDZCxXQUFXO0VBQ1gsWUFBWTtFQUNaLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsc0JBQXNCO0VBQ3RCLCtDQUErQztFQUMvQywyREFBNkM7QUFDL0M7QUFDQTtFQUNFO0lBQ0UsdUJBQXVCO0VBQ3pCO0VBQ0E7SUFDRSx5QkFBeUI7RUFDM0I7QUFDRiIsImZpbGUiOiJMb2FkZXIuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZsZXgtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcbiAgZmxleC13cmFwOiB3cmFwO1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xufVxuXG4uc3Bpbm5lci1zaXplIHtcbiAgaGVpZ2h0OiAzMHB4O1xuICB3aWR0aDogMzBweDtcbiAgbWFyZ2luOiAyMDBweDtcbn1cblxuQGtleWZyYW1lcyBzaGFrZSB7XG4gIDEwJSxcbiAgOTAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKC0xcHgsIDAsIDApO1xuICB9XG5cbiAgMjAlLFxuICA4MCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMnB4LCAwLCAwKTtcbiAgfVxuXG4gIDMwJSxcbiAgNTAlLFxuICA3MCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoLTRweCwgMCwgMCk7XG4gIH1cblxuICA0MCUsXG4gIDYwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCg0cHgsIDAsIDApO1xuICB9XG59XG5cbi5lcnJvci1hbmltIHtcbiAgYW5pbWF0aW9uOiBzaGFrZSAwLjgycyBjdWJpYy1iZXppZXIoMC4zNiwgMC4wNywgMC4xOSwgMC45NykgYm90aDtcbiAgYW5pbWF0aW9uLWl0ZXJhdGlvbi1jb3VudDogaW5maW5pdGU7XG59XG5cbkBrZXlmcmFtZXMgdXBkb3duIHtcbiAgMTAlLFxuICA5MCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMCwgLTJweCwgMCk7XG4gIH1cblxuICAyMCUsXG4gIDgwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLCAycHgsIDApO1xuICB9XG5cbiAgMzAlLFxuICA1MCUsXG4gIDcwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLCAtNHB4LCAwKTtcbiAgfVxuXG4gIDQwJSxcbiAgNjAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKDAsIDRweCwgMCk7XG4gIH1cbn1cblxuLmFycm93LWFuaW0ge1xuICBhbmltYXRpb246IHVwZG93biA1cyBjdWJpYy1iZXppZXIoMC4zNiwgMC4wNywgMC4xOSwgMC45NykgYm90aDtcbiAgYW5pbWF0aW9uLWl0ZXJhdGlvbi1jb3VudDogaW5maW5pdGU7XG59XG5cbi5sZHMtZHVhbC1yaW5nIHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB3aWR0aDogODBweDtcbiAgaGVpZ2h0OiA4MHB4O1xufVxuLmxkcy1kdWFsLXJpbmc6YWZ0ZXIge1xuICBjb250ZW50OiBcIiBcIjtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHdpZHRoOiA2NHB4O1xuICBoZWlnaHQ6IDY0cHg7XG4gIG1hcmdpbjogOHB4O1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIGJvcmRlcjogNnB4IHNvbGlkICNmZmY7XG4gIGJvcmRlci1jb2xvcjogI2ZmZiB0cmFuc3BhcmVudCAjZmZmIHRyYW5zcGFyZW50O1xuICBhbmltYXRpb246IGxkcy1kdWFsLXJpbmcgMS4ycyBsaW5lYXIgaW5maW5pdGU7XG59XG5Aa2V5ZnJhbWVzIGxkcy1kdWFsLXJpbmcge1xuICAwJSB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XG4gIH1cbiAgMTAwJSB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMzYwZGVnKTtcbiAgfVxufVxuIl19 */";
+    var css_248z$1 = ".Loader_flex-container__3jpWH {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  align-content: center;\n  flex-wrap: wrap;\n  flex-direction: row;\n}\n\n.Loader_spinner-size__xNpPl {\n  height: 30px;\n  width: 30px;\n  margin: 200px;\n}\n\n@keyframes Loader_shake__XtkXY {\n  10%,\n  90% {\n    transform: translate3d(-1px, 0, 0);\n  }\n\n  20%,\n  80% {\n    transform: translate3d(2px, 0, 0);\n  }\n\n  30%,\n  50%,\n  70% {\n    transform: translate3d(-4px, 0, 0);\n  }\n\n  40%,\n  60% {\n    transform: translate3d(4px, 0, 0);\n  }\n}\n\n.Loader_error-anim__NZjVw {\n  animation: Loader_shake__XtkXY 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;\n  animation-iteration-count: infinite;\n}\n\n@keyframes Loader_updown__1Bxle {\n  10%,\n  90% {\n    transform: translate3d(0, -2px, 0);\n  }\n\n  20%,\n  80% {\n    transform: translate3d(0, 2px, 0);\n  }\n\n  30%,\n  50%,\n  70% {\n    transform: translate3d(0, -4px, 0);\n  }\n\n  40%,\n  60% {\n    transform: translate3d(0, 4px, 0);\n  }\n}\n\n.Loader_arrow-anim__c7GZ3 {\n  animation: Loader_updown__1Bxle 5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;\n  animation-iteration-count: infinite;\n}\n\n.Loader_lds-dual-ring__lIXz- {\n  display: inline-block;\n  width: 80px;\n  height: 80px;\n}\n.Loader_lds-dual-ring__lIXz-:after {\n  content: \" \";\n  display: block;\n  width: 64px;\n  height: 64px;\n  margin: 8px;\n  border-radius: 50%;\n  border: 6px solid #fff;\n  border-color: #fff transparent #fff transparent;\n  animation: Loader_lds-dual-ring__lIXz- 1.2s linear infinite;\n}\n@keyframes Loader_lds-dual-ring__lIXz- {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkxvYWRlci5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLHVCQUF1QjtFQUN2QixxQkFBcUI7RUFDckIsZUFBZTtFQUNmLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLFlBQVk7RUFDWixXQUFXO0VBQ1gsYUFBYTtBQUNmOztBQUVBO0VBQ0U7O0lBRUUsa0NBQWtDO0VBQ3BDOztFQUVBOztJQUVFLGlDQUFpQztFQUNuQzs7RUFFQTs7O0lBR0Usa0NBQWtDO0VBQ3BDOztFQUVBOztJQUVFLGlDQUFpQztFQUNuQztBQUNGOztBQUVBO0VBQ0UsOEVBQWdFO0VBQ2hFLG1DQUFtQztBQUNyQzs7QUFFQTtFQUNFOztJQUVFLGtDQUFrQztFQUNwQzs7RUFFQTs7SUFFRSxpQ0FBaUM7RUFDbkM7O0VBRUE7OztJQUdFLGtDQUFrQztFQUNwQzs7RUFFQTs7SUFFRSxpQ0FBaUM7RUFDbkM7QUFDRjs7QUFFQTtFQUNFLDRFQUE4RDtFQUM5RCxtQ0FBbUM7QUFDckM7O0FBRUE7RUFDRSxxQkFBcUI7RUFDckIsV0FBVztFQUNYLFlBQVk7QUFDZDtBQUNBO0VBQ0UsWUFBWTtFQUNaLGNBQWM7RUFDZCxXQUFXO0VBQ1gsWUFBWTtFQUNaLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsc0JBQXNCO0VBQ3RCLCtDQUErQztFQUMvQywyREFBNkM7QUFDL0M7QUFDQTtFQUNFO0lBQ0UsdUJBQXVCO0VBQ3pCO0VBQ0E7SUFDRSx5QkFBeUI7RUFDM0I7QUFDRiIsImZpbGUiOiJMb2FkZXIuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZsZXgtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcbiAgZmxleC13cmFwOiB3cmFwO1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xufVxuXG4uc3Bpbm5lci1zaXplIHtcbiAgaGVpZ2h0OiAzMHB4O1xuICB3aWR0aDogMzBweDtcbiAgbWFyZ2luOiAyMDBweDtcbn1cblxuQGtleWZyYW1lcyBzaGFrZSB7XG4gIDEwJSxcbiAgOTAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKC0xcHgsIDAsIDApO1xuICB9XG5cbiAgMjAlLFxuICA4MCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMnB4LCAwLCAwKTtcbiAgfVxuXG4gIDMwJSxcbiAgNTAlLFxuICA3MCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoLTRweCwgMCwgMCk7XG4gIH1cblxuICA0MCUsXG4gIDYwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCg0cHgsIDAsIDApO1xuICB9XG59XG5cbi5lcnJvci1hbmltIHtcbiAgYW5pbWF0aW9uOiBzaGFrZSAwLjgycyBjdWJpYy1iZXppZXIoMC4zNiwgMC4wNywgMC4xOSwgMC45NykgYm90aDtcbiAgYW5pbWF0aW9uLWl0ZXJhdGlvbi1jb3VudDogaW5maW5pdGU7XG59XG5cbkBrZXlmcmFtZXMgdXBkb3duIHtcbiAgMTAlLFxuICA5MCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMCwgLTJweCwgMCk7XG4gIH1cblxuICAyMCUsXG4gIDgwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLCAycHgsIDApO1xuICB9XG5cbiAgMzAlLFxuICA1MCUsXG4gIDcwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLCAtNHB4LCAwKTtcbiAgfVxuXG4gIDQwJSxcbiAgNjAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKDAsIDRweCwgMCk7XG4gIH1cbn1cblxuLmFycm93LWFuaW0ge1xuICBhbmltYXRpb246IHVwZG93biA1cyBjdWJpYy1iZXppZXIoMC4zNiwgMC4wNywgMC4xOSwgMC45NykgYm90aDtcbiAgYW5pbWF0aW9uLWl0ZXJhdGlvbi1jb3VudDogaW5maW5pdGU7XG59XG5cbi5sZHMtZHVhbC1yaW5nIHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB3aWR0aDogODBweDtcbiAgaGVpZ2h0OiA4MHB4O1xufVxuLmxkcy1kdWFsLXJpbmc6YWZ0ZXIge1xuICBjb250ZW50OiBcIiBcIjtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHdpZHRoOiA2NHB4O1xuICBoZWlnaHQ6IDY0cHg7XG4gIG1hcmdpbjogOHB4O1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIGJvcmRlcjogNnB4IHNvbGlkICNmZmY7XG4gIGJvcmRlci1jb2xvcjogI2ZmZiB0cmFuc3BhcmVudCAjZmZmIHRyYW5zcGFyZW50O1xuICBhbmltYXRpb246IGxkcy1kdWFsLXJpbmcgMS4ycyBsaW5lYXIgaW5maW5pdGU7XG59XG5Aa2V5ZnJhbWVzIGxkcy1kdWFsLXJpbmcge1xuICAwJSB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XG4gIH1cbiAgMTAwJSB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMzYwZGVnKTtcbiAgfVxufVxuIl19 */";
     styleInject(css_248z$1);
 
     const PanelLoader = (props = { title: "Loading..." }) => {
@@ -92,7 +92,7 @@
                 React__default["default"].createElement("p", null))));
     };
 
-    var css_248z = ".BaseTable_padded-label__2Ka57 {\n  margin: 5px;\n}\n\n@keyframes BaseTable_spin__QRYbE {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(359deg);\n  }\n}\n\n.BaseTable_glyphicon-refresh-animate__3CbCl {\n  -animation: BaseTable_spin__QRYbE 2s infinite linear;\n  -ms-animation: BaseTable_spin__QRYbE 2s infinite linear;\n  -webkit-animation: BaseTable_spin__QRYbE 2s infinite linear;\n  -moz-animation: BaseTable_spin__QRYbE 2s infinite linear;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkJhc2VUYWJsZS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFXO0FBQ2I7O0FBRUE7RUFDRTtJQUNFLHVCQUF1QjtFQUN6QjtFQUNBO0lBQ0UseUJBQXlCO0VBQzNCO0FBQ0Y7O0FBRUE7RUFDRSxvREFBbUM7RUFDbkMsdURBQXNDO0VBQ3RDLDJEQUEwQztFQUMxQyx3REFBdUM7QUFDekMiLCJmaWxlIjoiQmFzZVRhYmxlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wYWRkZWQtbGFiZWwge1xuICBtYXJnaW46IDVweDtcbn1cblxuQGtleWZyYW1lcyBzcGluIHtcbiAgZnJvbSB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XG4gIH1cbiAgdG8ge1xuICAgIHRyYW5zZm9ybTogcm90YXRlKDM1OWRlZyk7XG4gIH1cbn1cblxuLmdseXBoaWNvbi1yZWZyZXNoLWFuaW1hdGUge1xuICAtYW5pbWF0aW9uOiBzcGluIDJzIGluZmluaXRlIGxpbmVhcjtcbiAgLW1zLWFuaW1hdGlvbjogc3BpbiAycyBpbmZpbml0ZSBsaW5lYXI7XG4gIC13ZWJraXQtYW5pbWF0aW9uOiBzcGluIDJzIGluZmluaXRlIGxpbmVhcjtcbiAgLW1vei1hbmltYXRpb246IHNwaW4gMnMgaW5maW5pdGUgbGluZWFyO1xufVxuIl19 */";
+    var css_248z = ".BaseTable_padded-label__1ogST {\n  margin: 5px;\n}\n\n@keyframes BaseTable_spin__bB8I- {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(359deg);\n  }\n}\n\n.BaseTable_glyphicon-refresh-animate__c3PHa {\n  -animation: BaseTable_spin__bB8I- 2s infinite linear;\n  -ms-animation: BaseTable_spin__bB8I- 2s infinite linear;\n  -webkit-animation: BaseTable_spin__bB8I- 2s infinite linear;\n  -moz-animation: BaseTable_spin__bB8I- 2s infinite linear;\n}\n\n.BaseTable_btn-text-colour__kTuNT{\n  color: hsl(0, 0%, 80%) !important;\n}\n\n.BaseTable_filter-btn__-4-xz{\n  color: hsl(0, 0%, 50%) !important;\n  margin-top: 2px !important;\n  min-height: 38px !important;\n  background-color: white !important;\n  border-color: hsl(0, 0%, 80%) !important;\n  border-top-left-radius: 4px !important;\n  border-bottom-left-radius: 4px !important;\n  border-right: 0 !important;\n  border-width: 1px !important;\n  font-weight: bold !important;\n  display: flex !important;\n  font-size: 15px !important;\n  font-family: \"Lato\",\"Helvetica Neue\",Helvetica,Arial,sans-serif !important;\n}\n\n.BaseTable_filter-toggle__o-M28{\n  stroke: hsl(0, 0%, 80%) !important;\n  fill: hsl(0, 0%, 80%) !important;\n  stroke-width: 0;\n  padding-top: 8px !important;\n  margin-top: 2px !important;\n  min-height: 38px !important;\n  background-color: white !important;\n  border-color: hsl(0, 0%, 80%) !important;\n  border-top-right-radius: 4px !important;\n  border-bottom-right-radius: 4px !important;\n  border-left: 0 !important;\n  border-width: 1px !important;\n  display: flex !important;\n  font-size: 15px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkJhc2VUYWJsZS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFXO0FBQ2I7O0FBRUE7RUFDRTtJQUNFLHVCQUF1QjtFQUN6QjtFQUNBO0lBQ0UseUJBQXlCO0VBQzNCO0FBQ0Y7O0FBRUE7RUFDRSxvREFBbUM7RUFDbkMsdURBQXNDO0VBQ3RDLDJEQUEwQztFQUMxQyx3REFBdUM7QUFDekM7O0FBRUE7RUFDRSxpQ0FBaUM7QUFDbkM7O0FBRUE7RUFDRSxpQ0FBaUM7RUFDakMsMEJBQTBCO0VBQzFCLDJCQUEyQjtFQUMzQixrQ0FBa0M7RUFDbEMsd0NBQXdDO0VBQ3hDLHNDQUFzQztFQUN0Qyx5Q0FBeUM7RUFDekMsMEJBQTBCO0VBQzFCLDRCQUE0QjtFQUM1Qiw0QkFBNEI7RUFDNUIsd0JBQXdCO0VBQ3hCLDBCQUEwQjtFQUMxQiwwRUFBMEU7QUFDNUU7O0FBRUE7RUFDRSxrQ0FBa0M7RUFDbEMsZ0NBQWdDO0VBQ2hDLGVBQWU7RUFDZiwyQkFBMkI7RUFDM0IsMEJBQTBCO0VBQzFCLDJCQUEyQjtFQUMzQixrQ0FBa0M7RUFDbEMsd0NBQXdDO0VBQ3hDLHVDQUF1QztFQUN2QywwQ0FBMEM7RUFDMUMseUJBQXlCO0VBQ3pCLDRCQUE0QjtFQUM1Qix3QkFBd0I7RUFDeEIsMEJBQTBCO0FBQzVCIiwiZmlsZSI6IkJhc2VUYWJsZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGFkZGVkLWxhYmVsIHtcbiAgbWFyZ2luOiA1cHg7XG59XG5cbkBrZXlmcmFtZXMgc3BpbiB7XG4gIGZyb20ge1xuICAgIHRyYW5zZm9ybTogcm90YXRlKDBkZWcpO1xuICB9XG4gIHRvIHtcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgzNTlkZWcpO1xuICB9XG59XG5cbi5nbHlwaGljb24tcmVmcmVzaC1hbmltYXRlIHtcbiAgLWFuaW1hdGlvbjogc3BpbiAycyBpbmZpbml0ZSBsaW5lYXI7XG4gIC1tcy1hbmltYXRpb246IHNwaW4gMnMgaW5maW5pdGUgbGluZWFyO1xuICAtd2Via2l0LWFuaW1hdGlvbjogc3BpbiAycyBpbmZpbml0ZSBsaW5lYXI7XG4gIC1tb3otYW5pbWF0aW9uOiBzcGluIDJzIGluZmluaXRlIGxpbmVhcjtcbn1cblxuLmJ0bi10ZXh0LWNvbG91cntcbiAgY29sb3I6IGhzbCgwLCAwJSwgODAlKSAhaW1wb3J0YW50O1xufVxuXG4uZmlsdGVyLWJ0bntcbiAgY29sb3I6IGhzbCgwLCAwJSwgNTAlKSAhaW1wb3J0YW50O1xuICBtYXJnaW4tdG9wOiAycHggIWltcG9ydGFudDtcbiAgbWluLWhlaWdodDogMzhweCAhaW1wb3J0YW50O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xuICBib3JkZXItY29sb3I6IGhzbCgwLCAwJSwgODAlKSAhaW1wb3J0YW50O1xuICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiA0cHggIWltcG9ydGFudDtcbiAgYm9yZGVyLWJvdHRvbS1sZWZ0LXJhZGl1czogNHB4ICFpbXBvcnRhbnQ7XG4gIGJvcmRlci1yaWdodDogMCAhaW1wb3J0YW50O1xuICBib3JkZXItd2lkdGg6IDFweCAhaW1wb3J0YW50O1xuICBmb250LXdlaWdodDogYm9sZCAhaW1wb3J0YW50O1xuICBkaXNwbGF5OiBmbGV4ICFpbXBvcnRhbnQ7XG4gIGZvbnQtc2l6ZTogMTVweCAhaW1wb3J0YW50O1xuICBmb250LWZhbWlseTogXCJMYXRvXCIsXCJIZWx2ZXRpY2EgTmV1ZVwiLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmICFpbXBvcnRhbnQ7XG59XG5cbi5maWx0ZXItdG9nZ2xle1xuICBzdHJva2U6IGhzbCgwLCAwJSwgODAlKSAhaW1wb3J0YW50O1xuICBmaWxsOiBoc2woMCwgMCUsIDgwJSkgIWltcG9ydGFudDtcbiAgc3Ryb2tlLXdpZHRoOiAwO1xuICBwYWRkaW5nLXRvcDogOHB4ICFpbXBvcnRhbnQ7XG4gIG1hcmdpbi10b3A6IDJweCAhaW1wb3J0YW50O1xuICBtaW4taGVpZ2h0OiAzOHB4ICFpbXBvcnRhbnQ7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlICFpbXBvcnRhbnQ7XG4gIGJvcmRlci1jb2xvcjogaHNsKDAsIDAlLCA4MCUpICFpbXBvcnRhbnQ7XG4gIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiA0cHggIWltcG9ydGFudDtcbiAgYm9yZGVyLWJvdHRvbS1yaWdodC1yYWRpdXM6IDRweCAhaW1wb3J0YW50O1xuICBib3JkZXItbGVmdDogMCAhaW1wb3J0YW50O1xuICBib3JkZXItd2lkdGg6IDFweCAhaW1wb3J0YW50O1xuICBkaXNwbGF5OiBmbGV4ICFpbXBvcnRhbnQ7XG4gIGZvbnQtc2l6ZTogMTVweCAhaW1wb3J0YW50O1xufSJdfQ== */";
     styleInject(css_248z);
 
     const colourStyles = {
@@ -104,159 +104,143 @@
         },
     };
 
-    // Define a default UI for filtering
-    function defaultColumnFilter({ column: { filterValue, preFilteredRows, setFilter }, }) {
-        return React__default["default"].createElement(React__default["default"].Fragment, null);
-    }
-    function textColumnFilter({ column: { filterValue, preFilteredRows, setFilter }, }) {
-        const count = preFilteredRows.length;
-        return (React__default["default"].createElement("input", { className: "form-control", value: filterValue || "", onChange: (e) => {
-                setFilter(e.target.value || undefined); // Set undefined to remove the filter entirely
-            }, placeholder: `Search ${count} records...` }));
-    }
-    // This is a custom filter UI for selecting
-    // a unique option from a list
-    function selectColumnFilter({ column: { setFilter, filterValue, preFilteredRows, id }, }) {
-        // Calculate the options for filtering
-        // using the preFilteredRows
-        const options = React__default["default"].useMemo(() => {
-            const options = new Set();
-            if (!preFilteredRows) {
-                return [];
-            }
-            preFilteredRows.forEach((row) => {
-                if (row.values[id] !== null) {
-                    if (typeof row.values[id] === "object") {
-                        options.add(row.values[id]["name"]);
-                    }
-                    else {
-                        options.add(row.values[id]);
-                    }
-                }
-            });
-            return [...options.values()];
-        }, [id, preFilteredRows]);
-        // Render a multi-select box
-        return (React__default["default"].createElement(Select__default["default"], { key: filterValue, title: filterValue, onChange: (e) => setFilter(e.value), value: { label: filterValue || "All" }, defaultValue: { label: "All" }, styles: colourStyles, options: [{ id: -1, value: "", label: "All" }].concat(options.map((o, i) => {
-                return { id: i, value: o, label: o };
-            })) }));
-    }
-
-    function MyTooltip({ message }) {
+    function MyTooltip(message) {
         return React__default["default"].createElement(reactBootstrap.Tooltip, { id: "character_tooltip" }, message);
     }
-    const defaultPropGetter = () => ({});
-    function strToKey(keyString, ob) {
-        return keyString.split(".").reduce(function (p, prop) {
-            return p[prop];
-        }, ob);
-    }
-    const BaseTable = (props, { getRowProps = defaultPropGetter, }) => {
-        const defaultColumn = React__default["default"].useMemo(() => ({
-            // Let's set up our default Filter UI
-            Filter: defaultColumnFilter,
-        }), []);
-        const filterTypes = React__default["default"].useMemo(() => ({
-            text: (rows, ids, filterValue) => {
-                return rows.filter((row) => {
-                    return ids.some((id) => {
-                        if (!filterValue) {
-                            return true;
-                        }
-                        else {
-                            let rowValue = row.values[id];
-                            if (typeof rowValue === "object") {
-                                rowValue = rowValue.name;
-                            }
-                            if (row.hasOwnProperty("originalSubRows")) {
-                                rowValue += row.originalSubRows.reduce((p, r) => {
-                                    return (p += " " + strToKey(id, r));
-                                }, "");
-                            }
-                            return rowValue
-                                ? rowValue.toLowerCase().includes(filterValue.toLowerCase())
-                                : false;
-                        }
-                    });
-                });
-            },
-        }), []);
-        const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow, canPreviousPage, canNextPage, pageOptions, pageCount, gotoPage, nextPage, previousPage, setPageSize, visibleColumns, state: { pageIndex, pageSize }, } = reactTable.useTable({
-            columns: props.columns,
-            data: props.data,
-            defaultColumn,
-            filterTypes,
-            initialState: {
-                pageSize: 10,
-                sortBy: [],
-            },
-        }, reactTable.useFilters, reactTable.useSortBy, reactTable.useExpanded, reactTable.usePagination);
-        if (props.isLoading)
+    const BaseTable = ({ isLoading, isFetching, debugTable, data, error, columns, asyncExpandFunction, }) => {
+        if (isLoading)
             return React__default["default"].createElement(PanelLoader, { title: "Loading Data", message: "Please Wait" });
+        if (error)
+            return (React__default["default"].createElement(ErrorLoader, { title: "Error Loading from API", message: "Try Again Later" }));
+        return (React__default["default"].createElement(_baseTable, { ...{
+                data,
+                columns,
+                isFetching,
+                debugTable,
+            } }));
+    };
+    function _baseTable({ data, columns, isFetching, debugTable = false, }) {
+        const table = reactTable.useReactTable({
+            data,
+            columns,
+            // Pipeline
+            getCoreRowModel: reactTable.getCoreRowModel(),
+            getFilteredRowModel: reactTable.getFilteredRowModel(),
+            getSortedRowModel: reactTable.getSortedRowModel(),
+            getPaginationRowModel: reactTable.getPaginationRowModel(),
+            getFacetedRowModel: reactTable.getFacetedRowModel(),
+            getFacetedUniqueValues: reactTable.getFacetedUniqueValues(),
+            getFacetedMinMaxValues: reactTable.getFacetedMinMaxValues(),
+            //
+            debugTable: debugTable,
+            filterFns: FilterFns,
+        });
         return (React__default["default"].createElement(React__default["default"].Fragment, null,
-            React__default["default"].createElement(reactBootstrap.Table, { striped: true },
-                React__default["default"].createElement("thead", { ...getTableProps() },
-                    headerGroups.map((headerGroup) => (React__default["default"].createElement("tr", { ...headerGroup.getHeaderGroupProps() }, headerGroup.headers.map((column) => (React__default["default"].createElement("th", { ...column.getHeaderProps(column.getSortByToggleProps()) },
-                        column.render("Header"),
-                        React__default["default"].createElement("span", { className: "pull-right" }, column.canSort ? (column.isSorted ? (column.isSortedDesc ? (React__default["default"].createElement(reactBootstrap.Glyphicon, { glyph: "sort-by-attributes-alt" })) : (React__default["default"].createElement(reactBootstrap.Glyphicon, { glyph: "sort-by-attributes" }))) : (React__default["default"].createElement(reactBootstrap.Glyphicon, { glyph: "sort" }))) : ("")))))))),
-                    headerGroups.map((headerGroup) => (React__default["default"].createElement("tr", { ...headerGroup.getHeaderGroupProps() }, headerGroup.headers.map((column) => (React__default["default"].createElement("th", { ...column.getHeaderProps() },
-                        React__default["default"].createElement("div", null, column.canFilter ? column.render("Filter") : null)))))))),
-                React__default["default"].createElement("tbody", { ...getTableBodyProps() },
-                    "if (props.error) ",
-                    React__default["default"].createElement(ErrorLoader, { title: "Error Loading from API", message: "Try Again Later" }),
-                    "; } else ",
-                    page.map((row, i) => {
-                        prepareRow(row);
-                        const rowProps = getRowProps(row);
-                        return (React__default["default"].createElement(React__default["default"].Fragment, null,
-                            React__default["default"].createElement("tr", { ...row.getRowProps(rowProps) }, row.cells.map((cell) => {
-                                return (React__default["default"].createElement("td", { style: { verticalAlign: "middle" }, ...cell.getCellProps() }, cell.render("Cell")));
-                            })),
-                            row.isExpanded &&
-                                asyncExpandFunction({ row, rowProps, visibleColumns })));
-                    }))),
+            React__default["default"].createElement(reactBootstrap.Table, null,
+                React__default["default"].createElement("thead", null, table.getHeaderGroups().map((headerGroup) => (React__default["default"].createElement(React__default["default"].Fragment, null,
+                    React__default["default"].createElement("tr", { key: `name-${headerGroup.id}` }, headerGroup.headers.map((header) => {
+                        return (React__default["default"].createElement("th", { key: header.id, colSpan: header.colSpan }, header.isPlaceholder ? null : (React__default["default"].createElement("div", { ...{
+                                className: header.column.getCanSort()
+                                    ? "cursor-pointer select-none"
+                                    : "",
+                                onClick: header.column.getToggleSortingHandler(),
+                            } },
+                            reactTable.flexRender(header.column.columnDef.header, header.getContext()),
+                            {
+                                asc: (React__default["default"].createElement(reactBootstrap.Glyphicon, { className: "pull-right", glyph: "sort-by-attributes" })),
+                                desc: (React__default["default"].createElement(reactBootstrap.Glyphicon, { className: "pull-right", glyph: "sort-by-attributes-alt" })),
+                            }[header.column.getIsSorted()] ?? (React__default["default"].createElement(reactBootstrap.Glyphicon, { className: "pull-right", glyph: "sort" }))))));
+                    })),
+                    React__default["default"].createElement("tr", { key: `filter-${headerGroup.id}` }, headerGroup.headers.map((header) => {
+                        return (React__default["default"].createElement("th", { key: header.id, colSpan: header.colSpan }, header.column.getCanFilter() ? (React__default["default"].createElement("div", null,
+                            React__default["default"].createElement(Filter, { column: header.column, table: table }))) : ("")));
+                    })))))),
+                React__default["default"].createElement("tbody", null, table.getRowModel().rows.map((row) => {
+                    return (React__default["default"].createElement("tr", { key: row.id }, row.getVisibleCells().map((cell) => {
+                        return (React__default["default"].createElement("td", { key: cell.id }, reactTable.flexRender(cell.column.columnDef.cell, cell.getContext())));
+                    })));
+                }))),
             React__default["default"].createElement("div", { className: "pagination pull-right" },
                 React__default["default"].createElement(reactBootstrap.ButtonToolbar, null,
                     React__default["default"].createElement(reactBootstrap.ButtonGroup, null,
-                        React__default["default"].createElement(reactBootstrap.Button, { bsStyle: "success", onClick: () => gotoPage(0), disabled: !canPreviousPage },
+                        React__default["default"].createElement(reactBootstrap.Button, { bsStyle: "success", onClick: () => table.setPageIndex(0), disabled: !table.getCanPreviousPage() },
                             React__default["default"].createElement(reactBootstrap.Glyphicon, { glyph: "step-backward" })),
                         " ",
-                        React__default["default"].createElement(reactBootstrap.Button, { bsStyle: "success", onClick: () => previousPage(), disabled: !canPreviousPage },
+                        React__default["default"].createElement(reactBootstrap.Button, { bsStyle: "success", onClick: () => table.previousPage(), disabled: !table.getCanPreviousPage() },
                             React__default["default"].createElement(reactBootstrap.Glyphicon, { glyph: "triangle-left" })),
                         " ",
-                        React__default["default"].createElement(reactBootstrap.Button, { bsStyle: "success", onClick: () => nextPage(), disabled: !canNextPage },
+                        React__default["default"].createElement(reactBootstrap.Button, { bsStyle: "success", onClick: () => table.nextPage(), disabled: !table.getCanNextPage() },
                             React__default["default"].createElement(reactBootstrap.Glyphicon, { glyph: "triangle-right" })),
                         " ",
-                        React__default["default"].createElement(reactBootstrap.Button, { bsStyle: "success", onClick: () => gotoPage(pageCount - 1), disabled: !canNextPage },
+                        React__default["default"].createElement(reactBootstrap.Button, { bsStyle: "success", onClick: () => table.setPageIndex(table.getPageCount() - 1), disabled: !table.getCanNextPage() },
                             React__default["default"].createElement(reactBootstrap.Glyphicon, { glyph: "step-forward" }))),
                     React__default["default"].createElement(reactBootstrap.ButtonGroup, null,
                         React__default["default"].createElement(reactBootstrap.Button, { active: true, bsStyle: "success" }, "Page Size:"),
                         " ",
-                        React__default["default"].createElement(reactBootstrap.SplitButton, { id: "pageSizeDropdown", bsStyle: "success", title: pageSize, onSelect: (e) => {
-                                setPageSize(Number(e));
+                        React__default["default"].createElement(reactBootstrap.SplitButton, { id: "pageSizeDropdown", bsStyle: "success", title: table.getState().pagination.pageSize, onSelect: (e) => {
+                                table.setPageSize(Number(e.target.value));
                             } }, [10, 50, 100, 1000000].map((_pageSize) => (React__default["default"].createElement(reactBootstrap.MenuItem, { id: _pageSize, key: _pageSize, eventKey: _pageSize, value: _pageSize },
                             "Show ",
                             _pageSize))))))),
             React__default["default"].createElement("div", { className: "pagination pull-left" },
                 React__default["default"].createElement(reactBootstrap.ButtonGroup, null,
-                    React__default["default"].createElement(reactBootstrap.Button, { active: true, bsStyle: "info" }, React__default["default"].createElement(React__default["default"].Fragment, null, pageOptions.length > 0 ? (React__default["default"].createElement(React__default["default"].Fragment, null,
-                        "Page",
+                    React__default["default"].createElement(reactBootstrap.Button, { active: true, bsStyle: "info" }, React__default["default"].createElement(React__default["default"].Fragment, null,
+                        table.getState().pagination.pageIndex + 1,
+                        " of",
                         " ",
-                        React__default["default"].createElement("strong", null,
-                            pageIndex + 1,
-                            " of ",
-                            pageOptions.length))) : (React__default["default"].createElement(React__default["default"].Fragment, null,
-                        "Page ",
-                        React__default["default"].createElement("strong", null, "- of -"))))),
+                        table.getPageCount())),
                     " ",
-                    props.isFetching ? (React__default["default"].createElement(reactBootstrap.OverlayTrigger, { placement: "bottom", overlay: MyTooltip({ message: "Refreshing Data" }) },
+                    isFetching ? (React__default["default"].createElement(reactBootstrap.OverlayTrigger, { placement: "bottom", trigger: "focus", overlay: MyTooltip({ message: "Refreshing Data" }) },
                         React__default["default"].createElement(reactBootstrap.Button, { bsStyle: "info" },
-                            React__default["default"].createElement(reactBootstrap.Glyphicon, { className: "glyphicon-refresh-animate", glyph: "refresh" })))) : (React__default["default"].createElement(reactBootstrap.OverlayTrigger, { placement: "bottom", overlay: MyTooltip({
-                            message: "Data Loaded: " + new Date().toLocaleString(),
-                        }) },
+                            React__default["default"].createElement(reactBootstrap.Glyphicon, { className: "glyphicon-refresh-animate", glyph: "refresh" })))) : (React__default["default"].createElement(reactBootstrap.OverlayTrigger, { placement: "bottom", trigger: "focus", overlay: MyTooltip("Data Loaded: " + new Date().toLocaleString()) },
                         React__default["default"].createElement(reactBootstrap.Button, { bsStyle: "info" },
-                            React__default["default"].createElement(reactBootstrap.Glyphicon, { glyph: "ok" }))))))));
-    };
+                            React__default["default"].createElement(reactBootstrap.Glyphicon, { glyph: "ok" })))))),
+            debugTable && (React__default["default"].createElement("div", { className: "col-xs-12" },
+                React__default["default"].createElement("div", null,
+                    table.getRowModel().rows.length,
+                    " Rows"),
+                React__default["default"].createElement("pre", null, JSON.stringify(table.getState(), null, 2))))));
+    }
+    function Filter({ column, table, }) {
+        const [input, setInput] = React.useState("");
+        const sortedUniqueValues = React__default["default"].useMemo(() => typeof firstValue === "number"
+            ? []
+            : Array.from(column.getFacetedUniqueValues().keys()).sort(), [column.getFacetedUniqueValues()]);
+        const selectOptions = sortedUniqueValues
+            .slice(0, 50)
+            .reduce((previousValue, currentValue) => {
+            previousValue.push({ value: currentValue, label: currentValue });
+            return previousValue;
+        }, []);
+        const firstValue = table
+            .getPreFilteredRowModel()
+            .flatRows[0]?.getValue(column.id);
+        const columnFilterValue = column.getFilterValue();
+        const popoverNumber = (React__default["default"].createElement(reactBootstrap.Popover, { id: "popover-positioned-top" },
+            React__default["default"].createElement("input", { type: "number", value: columnFilterValue?.[0] ?? "", onChange: (e) => column.setFilterValue((old) => [
+                    e.target.value,
+                    old?.[1],
+                ]), placeholder: `Min`, className: "form-control" }),
+            React__default["default"].createElement("p", { className: "text-center" }, "to"),
+            React__default["default"].createElement("input", { type: "number", value: columnFilterValue?.[1] ?? "", onChange: (e) => column.setFilterValue((old) => [
+                    old?.[0],
+                    e.target.value,
+                ]), placeholder: `Max`, className: "form-control" })));
+        return typeof firstValue === "number" ? (React__default["default"].createElement(reactBootstrap.OverlayTrigger, { trigger: "click", placement: "bottom", overlay: popoverNumber },
+            React__default["default"].createElement(reactBootstrap.ButtonGroup, { style: { display: "flex" } },
+                React__default["default"].createElement(reactBootstrap.Button, { className: "filter-btn", bsStyle: "primary", bsSize: "small" }, `Range`),
+                React__default["default"].createElement(reactBootstrap.Button, { className: "filter-toggle", bsStyle: "primary", bsSize: "small" },
+                    React__default["default"].createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20", "aria-hidden": "true", focusable: "false" },
+                        React__default["default"].createElement("path", { d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" })))))) : (React__default["default"].createElement(ReactSelect__default["default"], { styles: colourStyles, type: "text", isClearable: true, onChange: (value, action) => {
+                setInput("");
+                column.setFilterValue(value ? value.value : "");
+            }, inputValue: input, onInputChange: (value, action) => {
+                if (action.action === "input-change") {
+                    setInput(value);
+                    column.setFilterValue(value);
+                }
+            }, placeholder: `Search...`, className: "", options: selectOptions }));
+    }
 
     exports.AllianceLogo = AllianceLogo;
     exports.BaseTable = BaseTable;
@@ -265,8 +249,6 @@
     exports.EveWhoButton = EveWhoButton;
     exports.TypeIcon = TypeIcon;
     exports.ZKillButton = ZKillButton;
-    exports.selectColumnFilter = selectColumnFilter;
-    exports.textColumnFilter = textColumnFilter;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
