@@ -127,7 +127,6 @@ function _baseTable({ data, columns, isFetching, debugTable = false, }) {
         getFacetedMinMaxValues: getFacetedMinMaxValues(),
         //
         debugTable: debugTable,
-        filterFns: FilterFns,
     });
     return (React.createElement(React.Fragment, null,
         React.createElement(Table, null,

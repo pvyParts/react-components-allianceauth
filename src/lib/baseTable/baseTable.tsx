@@ -28,13 +28,11 @@ import {
   getFacetedMinMaxValues,
   getFacetedUniqueValues,
   ColumnDef,
-  FilterFns,
 } from "@tanstack/react-table";
 
 import { ErrorLoader, PanelLoader } from "../loaders/loaders";
 
 import "./BaseTable.css";
-import CreatableSelect from "react-select";
 import ReactSelect from "react-select";
 import { colourStyles } from "./baseTableStyles";
 
@@ -111,7 +109,6 @@ function _baseTable({
     getFacetedMinMaxValues: getFacetedMinMaxValues(),
     //
     debugTable: debugTable,
-    filterFns: FilterFns,
   });
 
   return (

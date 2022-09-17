@@ -133,7 +133,6 @@
             getFacetedMinMaxValues: reactTable.getFacetedMinMaxValues(),
             //
             debugTable: debugTable,
-            filterFns: FilterFns,
         });
         return (React__default["default"].createElement(React__default["default"].Fragment, null,
             React__default["default"].createElement(reactBootstrap.Table, null,
