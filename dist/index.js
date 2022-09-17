@@ -196,6 +196,9 @@ function _baseTable({ data, columns, isFetching, debugTable = false, }) {
 }
 function Filter({ column, table, }) {
     const [input, setInput] = useState("");
+    const firstValue = table
+        .getPreFilteredRowModel()
+        .flatRows[0]?.getValue(column.id);
     const sortedUniqueValues = React.useMemo(() => typeof firstValue === "number"
         ? []
         : Array.from(column.getFacetedUniqueValues().keys()).sort(), [column.getFacetedUniqueValues()]);
@@ -205,9 +208,6 @@ function Filter({ column, table, }) {
         previousValue.push({ value: currentValue, label: currentValue });
         return previousValue;
     }, []);
-    const firstValue = table
-        .getPreFilteredRowModel()
-        .flatRows[0]?.getValue(column.id);
     const columnFilterValue = column.getFilterValue();
     const popoverNumber = (React.createElement(Popover, { id: "popover-positioned-top" },
         React.createElement("input", { type: "number", value: columnFilterValue?.[0] ?? "", onChange: (e) => column.setFilterValue((old) => [

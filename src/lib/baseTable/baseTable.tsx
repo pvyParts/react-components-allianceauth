@@ -305,6 +305,10 @@ function Filter({
 }) {
   const [input, setInput] = useState("");
 
+  const firstValue = table
+    .getPreFilteredRowModel()
+    .flatRows[0]?.getValue(column.id);
+
   const sortedUniqueValues = React.useMemo(
     () =>
       typeof firstValue === "number"
@@ -319,9 +323,6 @@ function Filter({
       previousValue.push({ value: currentValue, label: currentValue });
       return previousValue;
     }, []);
-  const firstValue = table
-    .getPreFilteredRowModel()
-    .flatRows[0]?.getValue(column.id);
 
   const columnFilterValue = column.getFilterValue();
 
