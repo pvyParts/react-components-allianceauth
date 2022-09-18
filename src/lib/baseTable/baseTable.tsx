@@ -134,22 +134,29 @@ function _baseTable({
                             header.column.columnDef.header,
                             header.getContext()
                           )}
-                          {{
-                            asc: (
-                              <Glyphicon
-                                className="pull-right"
-                                glyph="sort-by-attributes"
-                              />
-                            ),
-                            desc: (
-                              <Glyphicon
-                                className="pull-right"
-                                glyph="sort-by-attributes-alt"
-                              />
-                            ),
-                          }[header.column.getIsSorted() as string] ?? (
-                            <Glyphicon className="pull-right" glyph="sort" />
-                          )}
+                          {header.column.getCanSort() ? (
+                            <>
+                              {{
+                                asc: (
+                                  <Glyphicon
+                                    className="pull-right"
+                                    glyph="sort-by-attributes"
+                                  />
+                                ),
+                                desc: (
+                                  <Glyphicon
+                                    className="pull-right"
+                                    glyph="sort-by-attributes-alt"
+                                  />
+                                ),
+                              }[header.column.getIsSorted() as string] ?? (
+                                <Glyphicon
+                                  className="pull-right"
+                                  glyph="sort"
+                                />
+                              )}
+                            </>
+                          ) : null}
                         </div>
                       )}
                     </th>
@@ -233,9 +240,6 @@ function _baseTable({
               id="pageSizeDropdown"
               bsStyle="success"
               title={table.getState().pagination.pageSize}
-              onSelect={(e) => {
-                table.setPageSize(Number(e.target.value));
-              }}
             >
               {[10, 50, 100, 1000000].map((_pageSize) => (
                 <MenuItem
@@ -243,6 +247,9 @@ function _baseTable({
                   key={_pageSize}
                   eventKey={_pageSize}
                   value={_pageSize}
+                  onSelect={(eventKey: any, event: Object) => {
+                    table.setPageSize(Number(eventKey));
+                  }}
                 >
                   Show {_pageSize}
                 </MenuItem>

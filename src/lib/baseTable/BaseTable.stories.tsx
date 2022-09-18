@@ -50,7 +50,7 @@ const Template: ComponentStory<typeof BaseTable> = (args) => {
         header: "Quote",
         accessorKey: "favouriteQuote",
         enableColumnFilter: false,
-        disableSortBy: true,
+        enableSorting: false,
       },
     ],
     []

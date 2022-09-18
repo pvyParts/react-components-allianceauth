@@ -139,10 +139,10 @@ function _baseTable({ data, columns, isFetching, debugTable = false, }) {
                             onClick: header.column.getToggleSortingHandler(),
                         } },
                         flexRender(header.column.columnDef.header, header.getContext()),
-                        {
+                        header.column.getCanSort() ? (React.createElement(React.Fragment, null, {
                             asc: (React.createElement(Glyphicon, { className: "pull-right", glyph: "sort-by-attributes" })),
                             desc: (React.createElement(Glyphicon, { className: "pull-right", glyph: "sort-by-attributes-alt" })),
-                        }[header.column.getIsSorted()] ?? (React.createElement(Glyphicon, { className: "pull-right", glyph: "sort" }))))));
+                        }[header.column.getIsSorted()] ?? (React.createElement(Glyphicon, { className: "pull-right", glyph: "sort" })))) : null))));
                 })),
                 React.createElement("tr", { key: `filter-${headerGroup.id}` }, headerGroup.headers.map((header) => {
                     return (React.createElement("th", { key: header.id, colSpan: header.colSpan }, header.column.getCanFilter() ? (React.createElement("div", null,
@@ -170,9 +170,9 @@ function _baseTable({ data, columns, isFetching, debugTable = false, }) {
                 React.createElement(ButtonGroup, null,
                     React.createElement(Button, { active: true, bsStyle: "success" }, "Page Size:"),
                     " ",
-                    React.createElement(SplitButton, { id: "pageSizeDropdown", bsStyle: "success", title: table.getState().pagination.pageSize, onSelect: (e) => {
-                            table.setPageSize(Number(e.target.value));
-                        } }, [10, 50, 100, 1000000].map((_pageSize) => (React.createElement(MenuItem, { id: _pageSize, key: _pageSize, eventKey: _pageSize, value: _pageSize },
+                    React.createElement(SplitButton, { id: "pageSizeDropdown", bsStyle: "success", title: table.getState().pagination.pageSize }, [10, 50, 100, 1000000].map((_pageSize) => (React.createElement(MenuItem, { id: _pageSize, key: _pageSize, eventKey: _pageSize, value: _pageSize, onSelect: (eventKey, event) => {
+                            table.setPageSize(Number(eventKey));
+                        } },
                         "Show ",
                         _pageSize))))))),
         React.createElement("div", { className: "pagination pull-left" },

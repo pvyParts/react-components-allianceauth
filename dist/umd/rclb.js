@@ -145,10 +145,10 @@
                                 onClick: header.column.getToggleSortingHandler(),
                             } },
                             reactTable.flexRender(header.column.columnDef.header, header.getContext()),
-                            {
+                            header.column.getCanSort() ? (React__default["default"].createElement(React__default["default"].Fragment, null, {
                                 asc: (React__default["default"].createElement(reactBootstrap.Glyphicon, { className: "pull-right", glyph: "sort-by-attributes" })),
                                 desc: (React__default["default"].createElement(reactBootstrap.Glyphicon, { className: "pull-right", glyph: "sort-by-attributes-alt" })),
-                            }[header.column.getIsSorted()] ?? (React__default["default"].createElement(reactBootstrap.Glyphicon, { className: "pull-right", glyph: "sort" }))))));
+                            }[header.column.getIsSorted()] ?? (React__default["default"].createElement(reactBootstrap.Glyphicon, { className: "pull-right", glyph: "sort" })))) : null))));
                     })),
                     React__default["default"].createElement("tr", { key: `filter-${headerGroup.id}` }, headerGroup.headers.map((header) => {
                         return (React__default["default"].createElement("th", { key: header.id, colSpan: header.colSpan }, header.column.getCanFilter() ? (React__default["default"].createElement("div", null,
@@ -176,9 +176,9 @@
                     React__default["default"].createElement(reactBootstrap.ButtonGroup, null,
                         React__default["default"].createElement(reactBootstrap.Button, { active: true, bsStyle: "success" }, "Page Size:"),
                         " ",
-                        React__default["default"].createElement(reactBootstrap.SplitButton, { id: "pageSizeDropdown", bsStyle: "success", title: table.getState().pagination.pageSize, onSelect: (e) => {
-                                table.setPageSize(Number(e.target.value));
-                            } }, [10, 50, 100, 1000000].map((_pageSize) => (React__default["default"].createElement(reactBootstrap.MenuItem, { id: _pageSize, key: _pageSize, eventKey: _pageSize, value: _pageSize },
+                        React__default["default"].createElement(reactBootstrap.SplitButton, { id: "pageSizeDropdown", bsStyle: "success", title: table.getState().pagination.pageSize }, [10, 50, 100, 1000000].map((_pageSize) => (React__default["default"].createElement(reactBootstrap.MenuItem, { id: _pageSize, key: _pageSize, eventKey: _pageSize, value: _pageSize, onSelect: (eventKey, event) => {
+                                table.setPageSize(Number(eventKey));
+                            } },
                             "Show ",
                             _pageSize))))))),
             React__default["default"].createElement("div", { className: "pagination pull-left" },
