@@ -1,4 +1,3 @@
-import "./Loader.css";
 export interface LoaderProps extends Partial<HTMLElement> {
     message?: string;
     title?: string;

@@ -33,7 +33,7 @@ import {
 
 import { ErrorLoader, PanelLoader } from "../loaders/loaders";
 
-import "./BaseTable.css";
+import tableStyles from "./BaseTable.module.css";
 import ReactSelect from "react-select";
 import { colourStyles } from "./baseTableStyles";
 
@@ -286,7 +286,7 @@ function _baseTable({
             >
               <Button bsStyle="info">
                 <Glyphicon
-                  className="glyphicon-refresh-animate"
+                  className={tableStyles.glyphiconRefreshAnimate}
                   glyph="refresh"
                 />
               </Button>
@@ -376,10 +376,18 @@ function Filter({
   return typeof firstValue === "number" ? (
     <OverlayTrigger trigger="click" placement="bottom" overlay={popoverNumber}>
       <ButtonGroup style={{ display: "flex" }}>
-        <Button className="filter-btn" bsStyle="primary" bsSize="small">
+        <Button
+          className={tableStyles.filterBtn}
+          bsStyle="primary"
+          bsSize="small"
+        >
           {`Range`}
         </Button>
-        <Button className="filter-toggle" bsStyle="primary" bsSize="small">
+        <Button
+          className={tableStyles.filterToggle}
+          bsStyle="primary"
+          bsSize="small"
+        >
           <svg
             height="20"
             width="20"

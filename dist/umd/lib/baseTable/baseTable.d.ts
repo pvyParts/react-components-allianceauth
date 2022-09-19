@@ -1,5 +1,4 @@
 import { ColumnDef, SortingTableState, VisibilityTableState, PaginationInitialTableState } from "@tanstack/react-table";
-import "./BaseTable.css";
 declare type tableInitialState = SortingTableState & VisibilityTableState & PaginationInitialTableState;
 export interface BaseTableProps extends Partial<HTMLElement> {
     isLoading: boolean;

@@ -66,10 +66,10 @@ export default [
       }),
       terser(),
       postcss({
-        extract: true,
-        minimize: true,
+        extract: false,
+        minimize: false,
         modules: true,
-        sourceMap: true,
+        sourceMap: false,
         use: {
           less: { javascriptEnabled: true },
         },
