@@ -101,7 +101,7 @@ const colourStyles = {
 function MyTooltip(message) {
     return React.createElement(Tooltip, { id: "character_tooltip" }, message);
 }
-const BaseTable = ({ isLoading, isFetching, debugTable, data, error, columns, asyncExpandFunction, }) => {
+const BaseTable = ({ isLoading, isFetching, debugTable, data, error, columns, asyncExpandFunction, initialState = {}, }) => {
     if (isLoading)
         return React.createElement(PanelLoader, { title: "Loading Data", message: "Please Wait" });
     if (error)
@@ -111,9 +111,10 @@ const BaseTable = ({ isLoading, isFetching, debugTable, data, error, columns, as
             columns,
             isFetching,
             debugTable,
+            initialState,
         } }));
 };
-function _baseTable({ data, columns, isFetching, debugTable = false, }) {
+function _baseTable({ data, columns, isFetching, debugTable = false, initialState = {}, }) {
     const table = useReactTable({
         data,
         columns,
@@ -127,6 +128,7 @@ function _baseTable({ data, columns, isFetching, debugTable = false, }) {
         getFacetedMinMaxValues: getFacetedMinMaxValues(),
         //
         debugTable: debugTable,
+        state: initialState,
     });
     return (React.createElement(React.Fragment, null,
         React.createElement(Table, null,

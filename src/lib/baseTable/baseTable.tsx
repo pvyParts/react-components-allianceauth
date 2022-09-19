@@ -16,18 +16,19 @@ import {
 import {
   Column,
   Table as ReactTable,
-  PaginationState,
   useReactTable,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   flexRender,
-  SortingState,
   getFacetedRowModel,
   getFacetedMinMaxValues,
   getFacetedUniqueValues,
   ColumnDef,
+  SortingTableState,
+  VisibilityTableState,
+  PaginationInitialTableState,
 } from "@tanstack/react-table";
 
 import { ErrorLoader, PanelLoader } from "../loaders/loaders";
@@ -46,6 +47,10 @@ function strToKey(keyString: string, ob: object) {
   }, ob);
 }
 
+type tableInitialState = SortingTableState &
+  VisibilityTableState &
+  PaginationInitialTableState;
+
 export interface BaseTableProps extends Partial<HTMLElement> {
   isLoading: boolean;
   isFetching: boolean;
@@ -54,6 +59,7 @@ export interface BaseTableProps extends Partial<HTMLElement> {
   error: boolean;
   columns: ColumnDef<any, any>;
   asyncExpandFunction?: any;
+  initialState: tableInitialState;
 }
 
 const BaseTable = ({
@@ -64,6 +70,7 @@ const BaseTable = ({
   error,
   columns,
   asyncExpandFunction,
+  initialState = {},
 }: BaseTableProps) => {
   if (isLoading)
     return <PanelLoader title="Loading Data" message="Please Wait" />;
@@ -82,6 +89,7 @@ const BaseTable = ({
         columns,
         isFetching,
         debugTable,
+        initialState,
       }}
     />
   );
@@ -92,6 +100,7 @@ function _baseTable({
   columns,
   isFetching,
   debugTable = false,
+  initialState = {},
 }: {
   data: any[];
   columns: ColumnDef<any>[];
@@ -109,6 +118,7 @@ function _baseTable({
     getFacetedMinMaxValues: getFacetedMinMaxValues(),
     //
     debugTable: debugTable,
+    state: initialState,
   });
 
   return (

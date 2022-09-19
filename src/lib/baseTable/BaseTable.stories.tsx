@@ -12,14 +12,14 @@ export default {
 } as ComponentMeta<typeof BaseTable>;
 
 let data = [];
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 50; i++) {
   data.push({
     name: faker.name.fullName(),
     email: faker.internet.email(),
     postCode: faker.address.zipCode(),
     city: faker.address.cityName(),
     country: faker.address.country(),
-    phoneNumber: faker.datatype.number(99999),
+    number: faker.datatype.number(99999),
     favouriteQuote: faker.lorem.sentence(),
   });
 }
@@ -43,7 +43,7 @@ const Template: ComponentStory<typeof BaseTable> = (args) => {
       },
       {
         header: "Number",
-        accessorKey: "phoneNumber",
+        accessorKey: "number",
         disableSortBy: true,
       },
       {
@@ -67,20 +67,10 @@ Default.args = {
   isFetching: false,
   debugTable: false,
   error: false,
-  initialState: {
-    pageSize: 10,
-    sortBy: [],
-  },
 };
 Default.parameters = {
   controls: {
-    exclude: [
-      "data",
-      "columns",
-      "asyncExpandFunction",
-      "getRowProps",
-      "initialState",
-    ],
+    exclude: ["data", "columns", "asyncExpandFunction"],
   },
 };
 
@@ -89,21 +79,18 @@ export const Long = Template.bind({});
 Long.args = {
   isLoading: false,
   isFetching: false,
+  debugTable: false,
   error: false,
   initialState: {
-    pageSize: 100000,
-    sortBy: [],
+    pagination: {
+      pageSize: 100000,
+      pageIndex: 0,
+    },
   },
 };
 Long.parameters = {
   controls: {
-    exclude: [
-      "data",
-      "columns",
-      "asyncExpandFunction",
-      "getRowProps",
-      "initialState",
-    ],
+    exclude: ["data", "columns", "asyncExpandFunction"],
   },
 };
 
@@ -112,10 +99,10 @@ export const Sorted = Template.bind({});
 Sorted.args = {
   isLoading: false,
   isFetching: false,
+  debugTable: false,
   error: false,
   initialState: {
-    pageSize: 10,
-    sortBy: [
+    sorting: [
       {
         id: "name",
         desc: false,
@@ -125,12 +112,56 @@ Sorted.args = {
 };
 Sorted.parameters = {
   controls: {
-    exclude: [
-      "data",
-      "columns",
-      "asyncExpandFunction",
-      "getRowProps",
-      "initialState",
+    exclude: ["data", "columns", "asyncExpandFunction"],
+  },
+};
+
+export const Visibility = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Visibility.args = {
+  isLoading: false,
+  isFetching: false,
+  debugTable: false,
+  error: false,
+  initialState: {
+    columnVisibility: {
+      name: false,
+      number: false,
+    },
+  },
+};
+Visibility.parameters = {
+  controls: {
+    exclude: ["data", "columns", "asyncExpandFunction"],
+  },
+};
+
+export const KitchenSink = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+KitchenSink.args = {
+  isLoading: false,
+  isFetching: false,
+  debugTable: false,
+  error: false,
+  initialState: {
+    columnVisibility: {
+      name: false,
+      number: false,
+    },
+    sorting: [
+      {
+        id: "email",
+        desc: false,
+      },
     ],
+    pagination: {
+      pageSize: 5,
+      pageIndex: 0,
+    },
+  },
+};
+KitchenSink.parameters = {
+  controls: {
+    exclude: ["data", "columns", "asyncExpandFunction"],
   },
 };

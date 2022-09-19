@@ -107,7 +107,7 @@
     function MyTooltip(message) {
         return React__default["default"].createElement(reactBootstrap.Tooltip, { id: "character_tooltip" }, message);
     }
-    const BaseTable = ({ isLoading, isFetching, debugTable, data, error, columns, asyncExpandFunction, }) => {
+    const BaseTable = ({ isLoading, isFetching, debugTable, data, error, columns, asyncExpandFunction, initialState = {}, }) => {
         if (isLoading)
             return React__default["default"].createElement(PanelLoader, { title: "Loading Data", message: "Please Wait" });
         if (error)
@@ -117,9 +117,10 @@
                 columns,
                 isFetching,
                 debugTable,
+                initialState,
             } }));
     };
-    function _baseTable({ data, columns, isFetching, debugTable = false, }) {
+    function _baseTable({ data, columns, isFetching, debugTable = false, initialState = {}, }) {
         const table = reactTable.useReactTable({
             data,
             columns,
@@ -133,6 +134,7 @@
             getFacetedMinMaxValues: reactTable.getFacetedMinMaxValues(),
             //
             debugTable: debugTable,
+            state: initialState,
         });
         return (React__default["default"].createElement(React__default["default"].Fragment, null,
             React__default["default"].createElement(reactBootstrap.Table, null,
