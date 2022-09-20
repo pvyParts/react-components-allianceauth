@@ -19,7 +19,7 @@ for (let i = 0; i < 50; i++) {
     postCode: faker.address.zipCode(),
     city: faker.address.cityName(),
     country: faker.address.country(),
-    number: faker.datatype.number(99999),
+    number: faker.datatype.number(9999999),
     favouriteQuote: faker.lorem.sentence(),
   });
 }

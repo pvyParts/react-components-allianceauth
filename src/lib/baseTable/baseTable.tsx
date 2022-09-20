@@ -73,14 +73,22 @@ const BaseTable = ({
   initialState = {},
 }: BaseTableProps) => {
   if (isLoading)
-    return <PanelLoader title="Loading Data" message="Please Wait" />;
+    return (
+      <>
+        <hr />
+        <PanelLoader title="Loading Data" message="Please Wait" />
+      </>
+    );
 
   if (error)
     return (
-      <ErrorLoader
-        title={"Error Loading from API"}
-        message={"Try Again Later"}
-      />
+      <>
+        <hr />
+        <ErrorLoader
+          title={"Error Loading from API"}
+          message={"Try Again Later"}
+        />
+      </>
     );
   return (
     <_baseTable
