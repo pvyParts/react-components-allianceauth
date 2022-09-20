@@ -10,32 +10,17 @@ function ZKillButton(props: ZKillButtonProps): JSX.Element {
     <Button
       target="_blank"
       rel="noopener noreferrer"
+      disabled={props.character_name ? false : true}
       alt="zKillboard"
       href={`https://zkillboard.com/search/${props.character_name}/`}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="13.5"
-        width="15"
-        viewBox="0 0 32 21"
+      <span
+        class="fa-stack fas"
+        style={{ lineHeight: "1em", height: "1em", width: "1em" }}
       >
-        <polygon
-          points="1,7 31,7 16,21"
-          style={{
-            fill: "currentColor",
-            stroke: "currentColor",
-            strokeWidth: 2,
-          }}
-        />
-        <polygon
-          points="1,2 31,2"
-          style={{
-            fill: "currentColor",
-            stroke: "currentColor",
-            strokeWidth: 2,
-          }}
-        />
-      </svg>
+        <i class="fas fa-sort-down"></i>
+        <i class="fas fa-minus fa-stack-1x" style={{ top: "-3px" }}></i>
+      </span>
     </Button>
   );
 }

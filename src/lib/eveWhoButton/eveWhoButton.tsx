@@ -10,6 +10,7 @@ function EveWhoButton(props: EveWhoButtonProps) {
     <Button
       target="_blank"
       rel="noopener noreferrer"
+      disabled={props.character_id ? false : true}
       alt="Eve Who"
       href={`https://evewho.com/character/${props.character_id}/`}
     >
