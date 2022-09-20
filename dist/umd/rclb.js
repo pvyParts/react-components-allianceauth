@@ -10,22 +10,14 @@
     var ReactSelect__default = /*#__PURE__*/_interopDefaultLegacy(ReactSelect);
 
     function ZKillButton(props) {
-        return (React__default["default"].createElement(reactBootstrap.Button, { target: "_blank", rel: "noopener noreferrer", alt: "zKillboard", href: `https://zkillboard.com/search/${props.character_name}/` },
-            React__default["default"].createElement("svg", { xmlns: "http://www.w3.org/2000/svg", height: "13.5", width: "15", viewBox: "0 0 32 21" },
-                React__default["default"].createElement("polygon", { points: "1,7 31,7 16,21", style: {
-                        fill: "currentColor",
-                        stroke: "currentColor",
-                        strokeWidth: 2,
-                    } }),
-                React__default["default"].createElement("polygon", { points: "1,2 31,2", style: {
-                        fill: "currentColor",
-                        stroke: "currentColor",
-                        strokeWidth: 2,
-                    } }))));
+        return (React__default["default"].createElement(reactBootstrap.Button, { target: "_blank", rel: "noopener noreferrer", disabled: props.character_name ? false : true, alt: "zKillboard", href: `https://zkillboard.com/search/${props.character_name}/` },
+            React__default["default"].createElement("span", { className: "fa-stack fas", style: { lineHeight: "1em", height: "1em", width: "1em" } },
+                React__default["default"].createElement("i", { className: "fas fa-sort-down" }),
+                React__default["default"].createElement("i", { className: "fas fa-minus fa-stack-1x", style: { top: "-3px" } }))));
     }
 
     function EveWhoButton(props) {
-        return (React__default["default"].createElement(reactBootstrap.Button, { target: "_blank", rel: "noopener noreferrer", alt: "Eve Who", href: `https://evewho.com/character/${props.character_id}/` },
+        return (React__default["default"].createElement(reactBootstrap.Button, { target: "_blank", rel: "noopener noreferrer", disabled: props.character_id ? false : true, alt: "Eve Who", href: `https://evewho.com/character/${props.character_id}/` },
             React__default["default"].createElement("i", { className: "fas fa-user" })));
     }
 
