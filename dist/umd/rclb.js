@@ -245,7 +245,9 @@
     exports.BaseTable = BaseTable;
     exports.CharacterPortrait = CharacterPortrait;
     exports.CorporationLogo = CorporationLogo;
+    exports.ErrorLoader = ErrorLoader;
     exports.EveWhoButton = EveWhoButton;
+    exports.PanelLoader = PanelLoader;
     exports.TypeIcon = TypeIcon;
     exports.ZKillButton = ZKillButton;
 

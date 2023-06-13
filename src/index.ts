@@ -5,3 +5,5 @@ export { CorporationLogo } from "./lib/eveImages";
 export { AllianceLogo } from "./lib/eveImages";
 export { TypeIcon } from "./lib/eveImages";
 export { BaseTable } from "./lib/baseTable";
+export { ErrorLoader } from "./lib/loaders/loaders";
+export { PanelLoader } from "./lib/loaders/loaders";
