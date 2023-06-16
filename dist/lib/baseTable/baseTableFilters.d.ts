@@ -1,3 +1,4 @@
+import React from "react";
 import { FilterFn, SortingFn } from "@tanstack/react-table";
 import { RankingInfo } from "@tanstack/match-sorter-utils";
 declare module "@tanstack/table-core" {
@@ -14,14 +15,14 @@ export declare function defaultColumnFilter({ column: { filterValue, preFiltered
         preFilteredRows: any;
         setFilter: any;
     };
-}): JSX.Element;
+}): React.JSX.Element;
 export declare function textColumnFilter({ column: { filterValue, preFilteredRows, setFilter }, }: {
     column: {
         filterValue: any;
         preFilteredRows: any;
         setFilter: any;
     };
-}): JSX.Element;
+}): React.JSX.Element;
 export declare function selectColumnFilter({ column: { setFilter, filterValue, preFilteredRows, id }, }: {
     column: {
         setFilter: any;
@@ -29,7 +30,7 @@ export declare function selectColumnFilter({ column: { setFilter, filterValue, p
         preFilteredRows: any;
         id: any;
     };
-}): JSX.Element;
+}): React.JSX.Element;
 export declare function defaultColumn(): {
     Filter: typeof defaultColumnFilter;
 };

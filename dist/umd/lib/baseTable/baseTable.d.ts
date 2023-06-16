@@ -1,5 +1,6 @@
+import React from "react";
 import { ColumnDef, SortingTableState, VisibilityTableState, PaginationInitialTableState } from "@tanstack/react-table";
-declare type tableInitialState = SortingTableState & VisibilityTableState & PaginationInitialTableState;
+type tableInitialState = SortingTableState & VisibilityTableState & PaginationInitialTableState;
 export interface BaseTableProps extends Partial<HTMLElement> {
     isLoading: boolean;
     isFetching: boolean;
@@ -10,6 +11,6 @@ export interface BaseTableProps extends Partial<HTMLElement> {
     asyncExpandFunction?: any;
     initialState: tableInitialState;
 }
-declare const BaseTable: ({ isLoading, isFetching, debugTable, data, error, columns, asyncExpandFunction, initialState, }: BaseTableProps) => JSX.Element;
+declare const BaseTable: ({ isLoading, isFetching, debugTable, data, error, columns, asyncExpandFunction, initialState, }: BaseTableProps) => React.JSX.Element;
 export { BaseTable };
 //# sourceMappingURL=baseTable.d.ts.map

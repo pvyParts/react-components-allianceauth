@@ -1,1 +1,1 @@
-{"version":3,"file":"CorporationLogo.stories.d.ts","sourceRoot":"","sources":["../../../src/lib/eveImages/CorporationLogo.stories.tsx"],"names":[],"mappings":"AACA,OAAO,EAAE,cAAc,EAAE,aAAa,EAAE,MAAM,kBAAkB,CAAC;;AAKjE,wBAI2C;AAO3C,eAAO,MAAM,OAAO,oFAAoB,CAAC"}
+{"version":3,"file":"CorporationLogo.stories.d.ts","sourceRoot":"","sources":["../../../src/lib/eveImages/CorporationLogo.stories.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAC1B,OAAO,EAAE,cAAc,EAAE,aAAa,EAAE,MAAM,kBAAkB,CAAC;;AAKjE,wBAI2C;AAO3C,eAAO,MAAM,OAAO,0FAAoB,CAAC"}
