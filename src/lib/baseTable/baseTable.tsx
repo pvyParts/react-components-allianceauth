@@ -17,6 +17,8 @@ import {
   Column,
   Table as ReactTable,
   useReactTable,
+  useGlobalFilter,
+  useAsyncDebounce,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
@@ -205,7 +207,7 @@ function _baseTable({
               <tr key={row.id}>
                 {row.getVisibleCells().map((cell) => {
                   return (
-                    <td key={cell.id}>
+                    <td key={cell.id} style={{ verticalAlign: "middle" }}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
