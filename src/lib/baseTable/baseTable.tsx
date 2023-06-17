@@ -413,6 +413,20 @@ function Filter({
         </Button>
       </ButtonGroup>
     </OverlayTrigger>
+  ) : typeof firstValue === "boolean" ? (
+    <Select
+      styles={colourStyles}
+      isClearable={true}
+      onChange={(value, action) => {
+        setInput("");
+        column.setFilterValue(value ? value.value : "");
+      }}
+      placeholder={`Filter...`}
+      options={[
+        { value: true, label: "Pass" },
+        { value: false, label: "Fail" },
+      ]}
+    />
   ) : (
     <Select
       styles={colourStyles}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Image, Table, Glyphicon, ButtonToolbar, ButtonGroup, SplitButton, MenuItem, OverlayTrigger, Popover, Tooltip } from 'react-bootstrap';
 import { useReactTable, getCoreRowModel, getFilteredRowModel, getSortedRowModel, getPaginationRowModel, getFacetedRowModel, getFacetedUniqueValues, getFacetedMinMaxValues, flexRender } from '@tanstack/react-table';
-import ReactSelect from 'react-select';
+import Select from 'react-select';
 
 function ZKillButton(props) {
     return (React.createElement(Button, { target: "_blank", rel: "noopener noreferrer", disabled: props.character_name ? false : true, alt: "zKillboard", href: `https://zkillboard.com/search/${props.character_name}/` },
@@ -226,15 +226,20 @@ function Filter({ column, table, }) {
             React.createElement(Button, { className: tableStyles.filterBtn, bsStyle: "primary", bsSize: "small" }, `Range`),
             React.createElement(Button, { className: tableStyles.filterToggle, bsStyle: "primary", bsSize: "small" },
                 React.createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20", "aria-hidden": "true", focusable: "false" },
-                    React.createElement("path", { d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" })))))) : (React.createElement(ReactSelect, { styles: colourStyles, type: "text", isClearable: true, onChange: (value, action) => {
-            setInput("");
-            column.setFilterValue(value ? value.value : "");
-        }, inputValue: input, onInputChange: (value, action) => {
-            if (action.action === "input-change") {
-                setInput(value);
-                column.setFilterValue(value);
-            }
-        }, placeholder: `Search...`, className: "", options: selectOptions, components: isHTML(firstValue) ? selectOveride : {} }));
+                    React.createElement("path", { d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" })))))) : (typeof firstValue === "boolean" ?
+        React.createElement(Select, { styles: colourStyles, isClearable: true, onChange: (value, action) => {
+                setInput("");
+                column.setFilterValue(value ? value.value : "");
+            }, placeholder: `Filter...`, options: [{ value: true, label: "Pass" }, { value: false, label: "Fail" }] })
+        : React.createElement(Select, { styles: colourStyles, isClearable: true, onChange: (value, action) => {
+                setInput("");
+                column.setFilterValue(value ? value.value : "");
+            }, inputValue: input, onInputChange: (value, action) => {
+                if (action.action === "input-change") {
+                    setInput(value);
+                    column.setFilterValue(value);
+                }
+            }, placeholder: `Search...`, className: "", options: selectOptions, components: isHTML(firstValue) ? selectOveride : {} }));
 }
 
 export { AllianceLogo, BaseTable, CharacterPortrait, CorporationLogo, ErrorLoader, EveWhoButton, PanelLoader, TypeIcon, ZKillButton };

@@ -20,6 +20,7 @@ for (let i = 0; i < 50; i++) {
     city: faker.address.cityName(),
     country: faker.address.country(),
     number: faker.datatype.number(9999999),
+    bool: faker.datatype.boolean(),
     favouriteQuote: faker.lorem.sentence(),
     htmltest: `<p><strong>${faker.lorem.sentence()}</strong></p>`,
   });
@@ -46,6 +47,10 @@ const Template: ComponentStory<typeof BaseTable> = (args) => {
         header: "Number",
         accessorKey: "number",
         disableSortBy: true,
+      },
+      {
+        header: "Boolean",
+        accessorKey: "bool",
       },
       {
         header: "Quote",

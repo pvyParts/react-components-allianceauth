@@ -1,13 +1,13 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-bootstrap'), require('@tanstack/react-table'), require('react-select')) :
     typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-bootstrap', '@tanstack/react-table', 'react-select'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.rclb = {}, global.React, global.reactBootstrap, global.reactTable, global.ReactSelect));
-})(this, (function (exports, React, reactBootstrap, reactTable, ReactSelect) { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.rclb = {}, global.React, global.reactBootstrap, global.reactTable, global.Select));
+})(this, (function (exports, React, reactBootstrap, reactTable, Select) { 'use strict';
 
     function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
     var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
-    var ReactSelect__default = /*#__PURE__*/_interopDefaultLegacy(ReactSelect);
+    var Select__default = /*#__PURE__*/_interopDefaultLegacy(Select);
 
     function ZKillButton(props) {
         return (React__default["default"].createElement(reactBootstrap.Button, { target: "_blank", rel: "noopener noreferrer", disabled: props.character_name ? false : true, alt: "zKillboard", href: `https://zkillboard.com/search/${props.character_name}/` },
@@ -232,15 +232,20 @@
                 React__default["default"].createElement(reactBootstrap.Button, { className: tableStyles.filterBtn, bsStyle: "primary", bsSize: "small" }, `Range`),
                 React__default["default"].createElement(reactBootstrap.Button, { className: tableStyles.filterToggle, bsStyle: "primary", bsSize: "small" },
                     React__default["default"].createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20", "aria-hidden": "true", focusable: "false" },
-                        React__default["default"].createElement("path", { d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" })))))) : (React__default["default"].createElement(ReactSelect__default["default"], { styles: colourStyles, type: "text", isClearable: true, onChange: (value, action) => {
-                setInput("");
-                column.setFilterValue(value ? value.value : "");
-            }, inputValue: input, onInputChange: (value, action) => {
-                if (action.action === "input-change") {
-                    setInput(value);
-                    column.setFilterValue(value);
-                }
-            }, placeholder: `Search...`, className: "", options: selectOptions, components: isHTML(firstValue) ? selectOveride : {} }));
+                        React__default["default"].createElement("path", { d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" })))))) : (typeof firstValue === "boolean" ?
+            React__default["default"].createElement(Select__default["default"], { styles: colourStyles, isClearable: true, onChange: (value, action) => {
+                    setInput("");
+                    column.setFilterValue(value ? value.value : "");
+                }, placeholder: `Filter...`, options: [{ value: true, label: "Pass" }, { value: false, label: "Fail" }] })
+            : React__default["default"].createElement(Select__default["default"], { styles: colourStyles, isClearable: true, onChange: (value, action) => {
+                    setInput("");
+                    column.setFilterValue(value ? value.value : "");
+                }, inputValue: input, onInputChange: (value, action) => {
+                    if (action.action === "input-change") {
+                        setInput(value);
+                        column.setFilterValue(value);
+                    }
+                }, placeholder: `Search...`, className: "", options: selectOptions, components: isHTML(firstValue) ? selectOveride : {} }));
     }
 
     exports.AllianceLogo = AllianceLogo;
