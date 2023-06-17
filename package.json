@@ -92,7 +92,6 @@
       "/src/**/*.spec.tsx"
     ]
   },
-  "private": true,
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "npx prettier --write"
