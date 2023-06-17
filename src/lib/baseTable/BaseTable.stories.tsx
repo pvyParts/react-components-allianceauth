@@ -51,6 +51,16 @@ const Template: ComponentStory<typeof BaseTable> = (args) => {
       {
         header: "Boolean",
         accessorKey: "bool",
+        cell: (row) =>
+          row.getValue() ? (
+            <a className="btn btn-success">
+              <i className="fas fa-check-circle"></i>
+            </a>
+          ) : (
+            <a className="btn btn-danger">
+              <i className="fas fa-times-circle"></i>
+            </a>
+          ),
       },
       {
         header: "Quote",
