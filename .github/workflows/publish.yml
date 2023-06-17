@@ -27,8 +27,6 @@ jobs:
           registry-url: https://npm.pkg.github.com
           scope: "@aaronkable"
 
-      - run: npm install -g yarn
-
       - name: Install dependencies
         run: npm install
         env:
