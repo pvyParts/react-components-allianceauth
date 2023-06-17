@@ -199,9 +199,11 @@ function Filter({ column, table, }) {
     const firstValue = table
         .getPreFilteredRowModel()
         .flatRows[0]?.getValue(column.id);
+    var isHTML = RegExp.prototype.test.bind(/(<([^>]+)>)/i);
     const sortedUniqueValues = React.useMemo(() => typeof firstValue === "number"
         ? []
         : Array.from(column.getFacetedUniqueValues().keys()).sort(), [column.getFacetedUniqueValues(), firstValue]);
+    const selectOveride = { Menu: () => React.createElement(React.Fragment, null), IndicatorsContainer: () => React.createElement(React.Fragment, null) };
     const selectOptions = sortedUniqueValues
         .slice(0, 50)
         .reduce((previousValue, currentValue) => {
@@ -232,7 +234,7 @@ function Filter({ column, table, }) {
                 setInput(value);
                 column.setFilterValue(value);
             }
-        }, placeholder: `Search...`, className: "", options: selectOptions }));
+        }, placeholder: `Search...`, className: "", options: selectOptions, components: isHTML(firstValue) ? selectOveride : {} }));
 }
 
 export { AllianceLogo, BaseTable, CharacterPortrait, CorporationLogo, ErrorLoader, EveWhoButton, PanelLoader, TypeIcon, ZKillButton };

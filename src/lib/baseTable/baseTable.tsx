@@ -36,7 +36,7 @@ import {
 import { ErrorLoader, PanelLoader } from "../loaders/loaders";
 
 import tableStyles from "./BaseTable.module.css";
-import ReactSelect from "react-select";
+import Select from "react-select";
 import { colourStyles } from "./baseTableStyles";
 
 function MyTooltip(message: string) {
@@ -336,6 +336,8 @@ function Filter({
     .getPreFilteredRowModel()
     .flatRows[0]?.getValue(column.id);
 
+  var isHTML = RegExp.prototype.test.bind(/(<([^>]+)>)/i);
+
   const sortedUniqueValues = React.useMemo(
     () =>
       typeof firstValue === "number"
@@ -343,6 +345,7 @@ function Filter({
         : Array.from(column.getFacetedUniqueValues().keys()).sort(),
     [column.getFacetedUniqueValues(), firstValue]
   );
+  const selectOveride = { Menu: () => <></>, IndicatorsContainer: () => <></> };
 
   const selectOptions = sortedUniqueValues
     .slice(0, 50)
@@ -411,9 +414,8 @@ function Filter({
       </ButtonGroup>
     </OverlayTrigger>
   ) : (
-    <ReactSelect
+    <Select
       styles={colourStyles}
-      type="text"
       isClearable={true}
       onChange={(value, action) => {
         setInput("");
@@ -429,6 +431,7 @@ function Filter({
       placeholder={`Search...`}
       className=""
       options={selectOptions}
+      components={isHTML(firstValue) ? selectOveride : {}}
     />
   );
 }

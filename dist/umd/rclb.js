@@ -205,9 +205,11 @@
         const firstValue = table
             .getPreFilteredRowModel()
             .flatRows[0]?.getValue(column.id);
+        var isHTML = RegExp.prototype.test.bind(/(<([^>]+)>)/i);
         const sortedUniqueValues = React__default["default"].useMemo(() => typeof firstValue === "number"
             ? []
             : Array.from(column.getFacetedUniqueValues().keys()).sort(), [column.getFacetedUniqueValues(), firstValue]);
+        const selectOveride = { Menu: () => React__default["default"].createElement(React__default["default"].Fragment, null), IndicatorsContainer: () => React__default["default"].createElement(React__default["default"].Fragment, null) };
         const selectOptions = sortedUniqueValues
             .slice(0, 50)
             .reduce((previousValue, currentValue) => {
@@ -238,7 +240,7 @@
                     setInput(value);
                     column.setFilterValue(value);
                 }
-            }, placeholder: `Search...`, className: "", options: selectOptions }));
+            }, placeholder: `Search...`, className: "", options: selectOptions, components: isHTML(firstValue) ? selectOveride : {} }));
     }
 
     exports.AllianceLogo = AllianceLogo;

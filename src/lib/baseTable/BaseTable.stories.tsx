@@ -21,6 +21,7 @@ for (let i = 0; i < 50; i++) {
     country: faker.address.country(),
     number: faker.datatype.number(9999999),
     favouriteQuote: faker.lorem.sentence(),
+    htmltest: `<p><strong>${faker.lorem.sentence()}</strong></p>`,
   });
 }
 
@@ -51,6 +52,14 @@ const Template: ComponentStory<typeof BaseTable> = (args) => {
         accessorKey: "favouriteQuote",
         enableColumnFilter: false,
         enableSorting: false,
+      },
+      {
+        header: "HTML",
+        accessorKey: "htmltest",
+        enableSorting: false,
+        cell: (row) => (
+          <div dangerouslySetInnerHTML={{ __html: row.getValue() }} />
+        ),
       },
     ],
     []
