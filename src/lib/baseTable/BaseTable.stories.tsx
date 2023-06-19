@@ -14,6 +14,7 @@ export default {
 let data = [];
 for (let i = 0; i < 50; i++) {
   data.push({
+    ob: { name: faker.name.fullName(), id: faker.datatype.number(9999999) },
     name: faker.name.fullName(),
     email: faker.internet.email(),
     postCode: faker.address.zipCode(),
@@ -33,6 +34,15 @@ const Template: ComponentStory<typeof BaseTable> = (args) => {
       {
         header: "Name",
         accessorKey: "name",
+      },
+      {
+        header: "Object",
+        accessorKey: "ob",
+        cell: (row) => (
+          <>
+            id:{row.getValue().id} name:{row.getValue().name}
+          </>
+        ),
       },
       {
         header: "Email",

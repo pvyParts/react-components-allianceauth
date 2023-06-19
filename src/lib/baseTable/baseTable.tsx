@@ -57,8 +57,10 @@ export interface BaseTableProps extends Partial<HTMLElement> {
   isLoading: boolean;
   isFetching: boolean;
   debugTable: boolean;
+  striped: boolean;
   data: any;
   error: boolean;
+  hover: boolean;
   columns: ColumnDef<any, any>;
   asyncExpandFunction?: any;
   initialState: tableInitialState;
@@ -72,6 +74,8 @@ const BaseTable = ({
   error,
   columns,
   asyncExpandFunction,
+  striped,
+  hover,
   initialState = {},
 }: BaseTableProps) => {
   if (isLoading)
@@ -100,6 +104,8 @@ const BaseTable = ({
         isFetching,
         debugTable,
         initialState,
+        striped,
+        hover,
       }}
     />
   );
@@ -109,6 +115,8 @@ function _baseTable({
   data,
   columns,
   isFetching,
+  striped = false,
+  hover = false,
   debugTable = false,
   initialState = {},
 }: {
@@ -133,7 +141,7 @@ function _baseTable({
 
   return (
     <>
-      <Table>
+      <Table {...{ striped, hover }}>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <>
@@ -332,27 +340,13 @@ function Filter({
 }) {
   const [input, setInput] = useState("");
 
-  const firstValue = table
+  const firstValue: any = table
     .getPreFilteredRowModel()
     .flatRows[0]?.getValue(column.id);
 
-  var isHTML = RegExp.prototype.test.bind(/(<([^>]+)>)/i);
+  const isHTML = RegExp.prototype.test.bind(/(<([^>]+)>)/i);
 
-  const sortedUniqueValues = React.useMemo(
-    () =>
-      typeof firstValue === "number"
-        ? []
-        : Array.from(column.getFacetedUniqueValues().keys()).sort(),
-    [column.getFacetedUniqueValues(), firstValue]
-  );
   const selectOveride = { Menu: () => <></>, IndicatorsContainer: () => <></> };
-
-  const selectOptions = sortedUniqueValues
-    .slice(0, 50)
-    .reduce((previousValue: Array<any>, currentValue: any) => {
-      previousValue.push({ value: currentValue, label: currentValue });
-      return previousValue;
-    }, []);
 
   const columnFilterValue = column.getFilterValue();
 
@@ -386,68 +380,112 @@ function Filter({
     </Popover>
   );
 
-  return typeof firstValue === "number" ? (
-    <OverlayTrigger trigger="click" placement="bottom" overlay={popoverNumber}>
-      <ButtonGroup style={{ display: "flex" }}>
-        <Button
-          className={tableStyles.filterBtn}
-          bsStyle="primary"
-          bsSize="small"
-        >
-          {`Range`}
-        </Button>
-        <Button
-          className={tableStyles.filterToggle}
-          bsStyle="primary"
-          bsSize="small"
-        >
-          <svg
-            height="20"
-            width="20"
-            viewBox="0 0 20 20"
-            aria-hidden="true"
-            focusable="false"
+  if (typeof firstValue === "number") {
+    return (
+      <OverlayTrigger
+        trigger="click"
+        placement="bottom"
+        overlay={popoverNumber}
+      >
+        <ButtonGroup style={{ display: "flex" }}>
+          <Button
+            className={tableStyles.filterBtn}
+            bsStyle="primary"
+            bsSize="small"
           >
-            <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path>
-          </svg>
-        </Button>
-      </ButtonGroup>
-    </OverlayTrigger>
-  ) : typeof firstValue === "boolean" ? (
-    <Select
-      styles={colourStyles}
-      isClearable={true}
-      onChange={(value, action) => {
-        setInput("");
-        column.setFilterValue(value ? value.value : "");
-      }}
-      placeholder={`Filter...`}
-      options={[
-        { value: true, label: "Pass" },
-        { value: false, label: "Fail" },
-      ]}
-    />
-  ) : (
-    <Select
-      styles={colourStyles}
-      isClearable={true}
-      onChange={(value, action) => {
-        setInput("");
-        column.setFilterValue(value ? value.value : "");
-      }}
-      inputValue={input} // allows you continue where you left off
-      onInputChange={(value, action) => {
-        if (action.action === "input-change") {
-          setInput(value);
-          column.setFilterValue(value);
-        }
-      }}
-      placeholder={`Search...`}
-      className=""
-      options={selectOptions}
-      components={isHTML(firstValue) ? selectOveride : {}}
-    />
-  );
+            {`Range`}
+          </Button>
+          <Button
+            className={tableStyles.filterToggle}
+            bsStyle="primary"
+            bsSize="small"
+          >
+            <svg
+              height="20"
+              width="20"
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path>
+            </svg>
+          </Button>
+        </ButtonGroup>
+      </OverlayTrigger>
+    );
+  } else if (typeof firstValue === "boolean") {
+    return (
+      <Select
+        styles={colourStyles}
+        isClearable={true}
+        onChange={(value, action) => {
+          setInput("");
+          column.setFilterValue(value ? value.value : "");
+        }}
+        placeholder={`Filter...`}
+        options={[
+          { value: true, label: "Pass" },
+          { value: false, label: "Fail" },
+        ]}
+      />
+    );
+  } else if (typeof firstValue === "object") {
+    return (
+      <Select
+        styles={colourStyles}
+        isClearable={true}
+        onChange={(value, action) => {
+          setInput("");
+          column.setFilterValue(value ? value.value : "");
+        }}
+        inputValue={input} // allows you continue where you left off
+        onInputChange={(value, action) => {
+          if (action.action === "input-change") {
+            setInput(value);
+            column.setFilterValue(value);
+          }
+        }}
+        placeholder={`Search...`}
+        className=""
+        options={[]}
+        components={selectOveride}
+      />
+    );
+  } else {
+    const sortedUniqueValues = React.useMemo(
+      () => Array.from(column.getFacetedUniqueValues().keys()).sort(),
+      [column.getFacetedUniqueValues(), firstValue]
+    );
+
+    const selectOptions = sortedUniqueValues
+      .slice(0, 50)
+      .reduce((previousValue: Array<any>, currentValue: any) => {
+        previousValue.push({ value: currentValue, label: currentValue });
+        return previousValue;
+      }, []);
+
+    return (
+      <Select
+        styles={colourStyles}
+        isClearable={true}
+        onChange={(value, action) => {
+          setInput("");
+          column.setFilterValue(value ? value.value : "");
+        }}
+        inputValue={input} // allows you continue where you left off
+        onInputChange={(value, action) => {
+          if (action.action === "input-change") {
+            setInput(value);
+            column.setFilterValue(value);
+          }
+        }}
+        placeholder={`Search...`}
+        className=""
+        options={selectOptions}
+        components={isHTML(firstValue) ? selectOveride : {}}
+      />
+    );
+  }
 }
 
 // export all the base table modules
