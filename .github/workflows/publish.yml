@@ -24,7 +24,7 @@ jobs:
         with:
           always-auth: true
           node-version: 20.x
-          registry-url: https://npm.pkg.github.com
+          registry-url: https://registry.npmjs.org
           scope: "@pvyparts"
 
       - name: Install dependencies
@@ -38,6 +38,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish package
-        run: npm publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
