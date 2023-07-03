@@ -61,7 +61,7 @@
       }
     }
 
-    var css_248z$1 = ".Loader-module_flexContainer__GlMdi {\n  margin-top: 150px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  align-content: center;\n  flex-wrap: wrap;\n  flex-direction: row;\n}\n\n@keyframes Loader-module_shake__1mapc {\n  10%,\n  90% {\n    transform: translate3d(-1px, 0, 0);\n  }\n\n  20%,\n  80% {\n    transform: translate3d(2px, 0, 0);\n  }\n\n  30%,\n  50%,\n  70% {\n    transform: translate3d(-4px, 0, 0);\n  }\n\n  40%,\n  60% {\n    transform: translate3d(4px, 0, 0);\n  }\n}\n\n.Loader-module_errorAnim__h3bUy {\n  animation: Loader-module_shake__1mapc 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;\n  animation-iteration-count: infinite;\n}\n\n.Loader-module_ldsDualRing__EJnqD {\n  display: inline-block;\n  width: 80px;\n  height: 80px;\n}\n.Loader-module_ldsDualRing__EJnqD:after {\n  content: \" \";\n  display: block;\n  width: 64px;\n  height: 64px;\n  margin: 8px;\n  border-radius: 50%;\n  border: 6px solid inherit;\n  border-color: inherit transparent #fff transparent;\n  animation: Loader-module_lds-dual-ring__4SWmn 1.2s linear infinite;\n}\n@keyframes Loader-module_lds-dual-ring__4SWmn {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkxvYWRlci5tb2R1bGUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaUJBQWlCO0VBQ2pCLGFBQWE7RUFDYixtQkFBbUI7RUFDbkIsdUJBQXVCO0VBQ3ZCLHFCQUFxQjtFQUNyQixlQUFlO0VBQ2YsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0U7O0lBRUUsa0NBQWtDO0VBQ3BDOztFQUVBOztJQUVFLGlDQUFpQztFQUNuQzs7RUFFQTs7O0lBR0Usa0NBQWtDO0VBQ3BDOztFQUVBOztJQUVFLGlDQUFpQztFQUNuQztBQUNGOztBQUVBO0VBQ0UscUZBQWdFO0VBQ2hFLG1DQUFtQztBQUNyQzs7QUFFQTtFQUNFLHFCQUFxQjtFQUNyQixXQUFXO0VBQ1gsWUFBWTtBQUNkO0FBQ0E7RUFDRSxZQUFZO0VBQ1osY0FBYztFQUNkLFdBQVc7RUFDWCxZQUFZO0VBQ1osV0FBVztFQUNYLGtCQUFrQjtFQUNsQix5QkFBeUI7RUFDekIsa0RBQWtEO0VBQ2xELGtFQUE2QztBQUMvQztBQUNBO0VBQ0U7SUFDRSx1QkFBdUI7RUFDekI7RUFDQTtJQUNFLHlCQUF5QjtFQUMzQjtBQUNGIiwiZmlsZSI6IkxvYWRlci5tb2R1bGUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZsZXhDb250YWluZXIge1xuICBtYXJnaW4tdG9wOiAxNTBweDtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcbiAgZmxleC13cmFwOiB3cmFwO1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xufVxuXG5Aa2V5ZnJhbWVzIHNoYWtlIHtcbiAgMTAlLFxuICA5MCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoLTFweCwgMCwgMCk7XG4gIH1cblxuICAyMCUsXG4gIDgwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgycHgsIDAsIDApO1xuICB9XG5cbiAgMzAlLFxuICA1MCUsXG4gIDcwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgtNHB4LCAwLCAwKTtcbiAgfVxuXG4gIDQwJSxcbiAgNjAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKDRweCwgMCwgMCk7XG4gIH1cbn1cblxuLmVycm9yQW5pbSB7XG4gIGFuaW1hdGlvbjogc2hha2UgMC44MnMgY3ViaWMtYmV6aWVyKDAuMzYsIDAuMDcsIDAuMTksIDAuOTcpIGJvdGg7XG4gIGFuaW1hdGlvbi1pdGVyYXRpb24tY291bnQ6IGluZmluaXRlO1xufVxuXG4ubGRzRHVhbFJpbmcge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHdpZHRoOiA4MHB4O1xuICBoZWlnaHQ6IDgwcHg7XG59XG4ubGRzRHVhbFJpbmc6YWZ0ZXIge1xuICBjb250ZW50OiBcIiBcIjtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHdpZHRoOiA2NHB4O1xuICBoZWlnaHQ6IDY0cHg7XG4gIG1hcmdpbjogOHB4O1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIGJvcmRlcjogNnB4IHNvbGlkIGluaGVyaXQ7XG4gIGJvcmRlci1jb2xvcjogaW5oZXJpdCB0cmFuc3BhcmVudCAjZmZmIHRyYW5zcGFyZW50O1xuICBhbmltYXRpb246IGxkcy1kdWFsLXJpbmcgMS4ycyBsaW5lYXIgaW5maW5pdGU7XG59XG5Aa2V5ZnJhbWVzIGxkcy1kdWFsLXJpbmcge1xuICAwJSB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XG4gIH1cbiAgMTAwJSB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMzYwZGVnKTtcbiAgfVxufVxuIl19 */";
+    var css_248z$1 = ".Loader-module_flexContainer__GlMdi {\n  margin-top: 150px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  align-content: center;\n  flex-wrap: wrap;\n  flex-direction: row;\n}\n\n@keyframes Loader-module_shake__1mapc {\n  10%,\n  90% {\n    transform: translate3d(-1px, 0, 0);\n  }\n\n  20%,\n  80% {\n    transform: translate3d(2px, 0, 0);\n  }\n\n  30%,\n  50%,\n  70% {\n    transform: translate3d(-4px, 0, 0);\n  }\n\n  40%,\n  60% {\n    transform: translate3d(4px, 0, 0);\n  }\n}\n\n.Loader-module_errorAnim__h3bUy {\n  animation: Loader-module_shake__1mapc 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;\n  animation-iteration-count: infinite;\n}\n\n.Loader-module_ldsDualRing__EJnqD {\n  display: inline-block;\n  width: 80px;\n  height: 80px;\n}\n\n.Loader-module_ldsDualRing__EJnqD:after {\n  content: \" \";\n  display: block;\n  width: 64px;\n  height: 64px;\n  margin: 8px;\n  border-radius: 50%;\n  border-width: 6px;\n  border-style: solid;\n  border-left-color: inherit;\n  border-top-color: transparent;\n  border-right-color: inherit;\n  border-bottom-color: transparent;\n  animation: Loader-module_lds-dual-ring__4SWmn 1.2s linear infinite;\n}\n\n@keyframes Loader-module_lds-dual-ring__4SWmn {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkxvYWRlci5tb2R1bGUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaUJBQWlCO0VBQ2pCLGFBQWE7RUFDYixtQkFBbUI7RUFDbkIsdUJBQXVCO0VBQ3ZCLHFCQUFxQjtFQUNyQixlQUFlO0VBQ2YsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0U7O0lBRUUsa0NBQWtDO0VBQ3BDOztFQUVBOztJQUVFLGlDQUFpQztFQUNuQzs7RUFFQTs7O0lBR0Usa0NBQWtDO0VBQ3BDOztFQUVBOztJQUVFLGlDQUFpQztFQUNuQztBQUNGOztBQUVBO0VBQ0UscUZBQWdFO0VBQ2hFLG1DQUFtQztBQUNyQzs7QUFFQTtFQUNFLHFCQUFxQjtFQUNyQixXQUFXO0VBQ1gsWUFBWTtBQUNkOztBQUVBO0VBQ0UsWUFBWTtFQUNaLGNBQWM7RUFDZCxXQUFXO0VBQ1gsWUFBWTtFQUNaLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsaUJBQWlCO0VBQ2pCLG1CQUFtQjtFQUNuQiwwQkFBMEI7RUFDMUIsNkJBQTZCO0VBQzdCLDJCQUEyQjtFQUMzQixnQ0FBZ0M7RUFDaEMsa0VBQTZDO0FBQy9DOztBQUVBO0VBQ0U7SUFDRSx1QkFBdUI7RUFDekI7RUFDQTtJQUNFLHlCQUF5QjtFQUMzQjtBQUNGIiwiZmlsZSI6IkxvYWRlci5tb2R1bGUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZsZXhDb250YWluZXIge1xuICBtYXJnaW4tdG9wOiAxNTBweDtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcbiAgZmxleC13cmFwOiB3cmFwO1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xufVxuXG5Aa2V5ZnJhbWVzIHNoYWtlIHtcbiAgMTAlLFxuICA5MCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoLTFweCwgMCwgMCk7XG4gIH1cblxuICAyMCUsXG4gIDgwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgycHgsIDAsIDApO1xuICB9XG5cbiAgMzAlLFxuICA1MCUsXG4gIDcwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgtNHB4LCAwLCAwKTtcbiAgfVxuXG4gIDQwJSxcbiAgNjAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKDRweCwgMCwgMCk7XG4gIH1cbn1cblxuLmVycm9yQW5pbSB7XG4gIGFuaW1hdGlvbjogc2hha2UgMC44MnMgY3ViaWMtYmV6aWVyKDAuMzYsIDAuMDcsIDAuMTksIDAuOTcpIGJvdGg7XG4gIGFuaW1hdGlvbi1pdGVyYXRpb24tY291bnQ6IGluZmluaXRlO1xufVxuXG4ubGRzRHVhbFJpbmcge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHdpZHRoOiA4MHB4O1xuICBoZWlnaHQ6IDgwcHg7XG59XG5cbi5sZHNEdWFsUmluZzphZnRlciB7XG4gIGNvbnRlbnQ6IFwiIFwiO1xuICBkaXNwbGF5OiBibG9jaztcbiAgd2lkdGg6IDY0cHg7XG4gIGhlaWdodDogNjRweDtcbiAgbWFyZ2luOiA4cHg7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgYm9yZGVyLXdpZHRoOiA2cHg7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIGJvcmRlci1sZWZ0LWNvbG9yOiBpbmhlcml0O1xuICBib3JkZXItdG9wLWNvbG9yOiB0cmFuc3BhcmVudDtcbiAgYm9yZGVyLXJpZ2h0LWNvbG9yOiBpbmhlcml0O1xuICBib3JkZXItYm90dG9tLWNvbG9yOiB0cmFuc3BhcmVudDtcbiAgYW5pbWF0aW9uOiBsZHMtZHVhbC1yaW5nIDEuMnMgbGluZWFyIGluZmluaXRlO1xufVxuXG5Aa2V5ZnJhbWVzIGxkcy1kdWFsLXJpbmcge1xuICAwJSB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XG4gIH1cbiAgMTAwJSB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMzYwZGVnKTtcbiAgfVxufVxuIl19 */";
     var styles = {"flexContainer":"Loader-module_flexContainer__GlMdi","errorAnim":"Loader-module_errorAnim__h3bUy","shake":"Loader-module_shake__1mapc","ldsDualRing":"Loader-module_ldsDualRing__EJnqD","lds-dual-ring":"Loader-module_lds-dual-ring__4SWmn"};
     styleInject(css_248z$1);
 
@@ -101,7 +101,7 @@
     function MyTooltip(message) {
         return React__default["default"].createElement(reactBootstrap.Tooltip, { id: "character_tooltip" }, message);
     }
-    const BaseTable = ({ isLoading, isFetching, debugTable, data, error, columns, asyncExpandFunction, initialState = {}, }) => {
+    const BaseTable = ({ isLoading, isFetching, debugTable, data, error, columns, asyncExpandFunction, striped, hover, initialState = {}, }) => {
         if (isLoading)
             return (React__default["default"].createElement(React__default["default"].Fragment, null,
                 React__default["default"].createElement("hr", null),
@@ -116,9 +116,11 @@
                 isFetching,
                 debugTable,
                 initialState,
+                striped,
+                hover,
             } }));
     };
-    function _baseTable({ data, columns, isFetching, debugTable = false, initialState = {}, }) {
+    function _baseTable({ data, columns, isFetching, striped = false, hover = false, debugTable = false, initialState = {}, }) {
         const table = reactTable.useReactTable({
             data,
             columns,
@@ -135,7 +137,7 @@
             state: initialState,
         });
         return (React__default["default"].createElement(React__default["default"].Fragment, null,
-            React__default["default"].createElement(reactBootstrap.Table, null,
+            React__default["default"].createElement(reactBootstrap.Table, { ...{ striped, hover } },
                 React__default["default"].createElement("thead", null, table.getHeaderGroups().map((headerGroup) => (React__default["default"].createElement(React__default["default"].Fragment, null,
                     React__default["default"].createElement("tr", { key: `name-${headerGroup.id}` }, headerGroup.headers.map((header) => {
                         return (React__default["default"].createElement("th", { key: header.id, colSpan: header.colSpan }, header.isPlaceholder ? null : (React__default["default"].createElement("div", { ...{
@@ -205,17 +207,8 @@
         const firstValue = table
             .getPreFilteredRowModel()
             .flatRows[0]?.getValue(column.id);
-        var isHTML = RegExp.prototype.test.bind(/(<([^>]+)>)/i);
-        const sortedUniqueValues = React__default["default"].useMemo(() => typeof firstValue === "number"
-            ? []
-            : Array.from(column.getFacetedUniqueValues().keys()).sort(), [column.getFacetedUniqueValues(), firstValue]);
+        const isHTML = RegExp.prototype.test.bind(/(<([^>]+)>)/i);
         const selectOveride = { Menu: () => React__default["default"].createElement(React__default["default"].Fragment, null), IndicatorsContainer: () => React__default["default"].createElement(React__default["default"].Fragment, null) };
-        const selectOptions = sortedUniqueValues
-            .slice(0, 50)
-            .reduce((previousValue, currentValue) => {
-            previousValue.push({ value: currentValue, label: currentValue });
-            return previousValue;
-        }, []);
         const columnFilterValue = column.getFilterValue();
         const popoverNumber = (React__default["default"].createElement(reactBootstrap.Popover, { id: "popover-positioned-top" },
             React__default["default"].createElement("input", { type: "number", value: columnFilterValue?.[0] ?? "", onChange: (e) => column.setFilterValue((old) => [
@@ -227,17 +220,43 @@
                     old?.[0],
                     e.target.value,
                 ]), placeholder: `Max`, className: "form-control" })));
-        return typeof firstValue === "number" ? (React__default["default"].createElement(reactBootstrap.OverlayTrigger, { trigger: "click", placement: "bottom", overlay: popoverNumber },
-            React__default["default"].createElement(reactBootstrap.ButtonGroup, { style: { display: "flex" } },
-                React__default["default"].createElement(reactBootstrap.Button, { className: tableStyles.filterBtn, bsStyle: "primary", bsSize: "small" }, `Range`),
-                React__default["default"].createElement(reactBootstrap.Button, { className: tableStyles.filterToggle, bsStyle: "primary", bsSize: "small" },
-                    React__default["default"].createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20", "aria-hidden": "true", focusable: "false" },
-                        React__default["default"].createElement("path", { d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" })))))) : (typeof firstValue === "boolean" ?
-            React__default["default"].createElement(Select__default["default"], { styles: colourStyles, isClearable: true, onChange: (value, action) => {
+        if (typeof firstValue === "number") {
+            return (React__default["default"].createElement(reactBootstrap.OverlayTrigger, { trigger: "click", placement: "bottom", overlay: popoverNumber },
+                React__default["default"].createElement(reactBootstrap.ButtonGroup, { style: { display: "flex" } },
+                    React__default["default"].createElement(reactBootstrap.Button, { className: tableStyles.filterBtn, bsStyle: "primary", bsSize: "small" }, `Range`),
+                    React__default["default"].createElement(reactBootstrap.Button, { className: tableStyles.filterToggle, bsStyle: "primary", bsSize: "small" },
+                        React__default["default"].createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20", "aria-hidden": "true", focusable: "false" },
+                            React__default["default"].createElement("path", { d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" }))))));
+        }
+        else if (typeof firstValue === "boolean") {
+            return (React__default["default"].createElement(Select__default["default"], { styles: colourStyles, isClearable: true, onChange: (value, action) => {
                     setInput("");
                     column.setFilterValue(value ? value.value : "");
-                }, placeholder: `Filter...`, options: [{ value: true, label: "Pass" }, { value: false, label: "Fail" }] })
-            : React__default["default"].createElement(Select__default["default"], { styles: colourStyles, isClearable: true, onChange: (value, action) => {
+                }, placeholder: `Filter...`, options: [
+                    { value: true, label: "Pass" },
+                    { value: false, label: "Fail" },
+                ] }));
+        }
+        else if (typeof firstValue === "object") {
+            return (React__default["default"].createElement(Select__default["default"], { styles: colourStyles, isClearable: true, onChange: (value, action) => {
+                    setInput("");
+                    column.setFilterValue(value ? value.value : "");
+                }, inputValue: input, onInputChange: (value, action) => {
+                    if (action.action === "input-change") {
+                        setInput(value);
+                        column.setFilterValue(value);
+                    }
+                }, placeholder: `Search...`, className: "", options: [], components: selectOveride }));
+        }
+        else {
+            const sortedUniqueValues = React__default["default"].useMemo(() => Array.from(column.getFacetedUniqueValues().keys()).sort(), [column.getFacetedUniqueValues(), firstValue]);
+            const selectOptions = sortedUniqueValues
+                .slice(0, 50)
+                .reduce((previousValue, currentValue) => {
+                previousValue.push({ value: currentValue, label: currentValue });
+                return previousValue;
+            }, []);
+            return (React__default["default"].createElement(Select__default["default"], { styles: colourStyles, isClearable: true, onChange: (value, action) => {
                     setInput("");
                     column.setFilterValue(value ? value.value : "");
                 }, inputValue: input, onInputChange: (value, action) => {
@@ -246,6 +265,7 @@
                         column.setFilterValue(value);
                     }
                 }, placeholder: `Search...`, className: "", options: selectOptions, components: isHTML(firstValue) ? selectOveride : {} }));
+        }
     }
 
     exports.AllianceLogo = AllianceLogo;
