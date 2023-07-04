@@ -381,19 +381,30 @@ function Filter({
   );
 
   if (typeof firstValue === "number") {
+    let fromToNumber = columnFilterValue as [string, string];
     return (
       <OverlayTrigger
         trigger="click"
         placement="bottom"
         overlay={popoverNumber}
       >
-        <ButtonGroup style={{ display: "flex" }}>
+        <ButtonGroup style={{ display: "flex", width: "100%" }}>
           <Button
-            className={tableStyles.filterBtn}
+            className={tableStyles.filterBtn + " btn-block"}
             bsStyle="primary"
             bsSize="small"
           >
-            {`Range`}
+            <>
+              {typeof fromToNumber?.[0] === "undefined" ||
+              fromToNumber?.[0] === ""
+                ? "0"
+                : fromToNumber?.[0]}
+              {" to "}
+              {typeof fromToNumber?.[1] === "undefined" ||
+              fromToNumber?.[1] === ""
+                ? "∞"
+                : fromToNumber?.[1]}
+            </>
           </Button>
           <Button
             className={tableStyles.filterToggle}

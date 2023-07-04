@@ -170,6 +170,30 @@ Visibility.parameters = {
   },
 };
 
+export const OnlyNumbers = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+OnlyNumbers.args = {
+  isLoading: false,
+  isFetching: false,
+  debugTable: false,
+  error: false,
+  initialState: {
+    columnVisibility: {
+      ob: false,
+      email: false,
+      country: false,
+      bool: false,
+      favouriteQuote: false,
+      htmltest: false,
+    },
+  },
+};
+OnlyNumbers.parameters = {
+  controls: {
+    exclude: ["data", "columns", "asyncExpandFunction"],
+  },
+};
+
 export const KitchenSink = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 KitchenSink.args = {
