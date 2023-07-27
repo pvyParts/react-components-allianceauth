@@ -78,6 +78,22 @@ const BaseTable = ({
   hover,
   initialState = {},
 }: BaseTableProps) => {
+  const table = useReactTable({
+    data,
+    columns,
+    // Pipeline
+    getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
+    getFacetedMinMaxValues: getFacetedMinMaxValues(),
+    //
+    debugTable: debugTable,
+    state: initialState,
+  });
+
   if (isLoading)
     return (
       <>
@@ -99,6 +115,7 @@ const BaseTable = ({
   return (
     <_baseTable
       {...{
+        table,
         data,
         columns,
         isFetching,
@@ -112,6 +129,7 @@ const BaseTable = ({
 };
 
 function _baseTable({
+  table,
   data,
   columns,
   isFetching,
@@ -123,22 +141,6 @@ function _baseTable({
   data: any[];
   columns: ColumnDef<any>[];
 }) {
-  const table = useReactTable({
-    data,
-    columns,
-    // Pipeline
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
-    getFacetedMinMaxValues: getFacetedMinMaxValues(),
-    //
-    debugTable: debugTable,
-    state: initialState,
-  });
-
   return (
     <>
       <Table {...{ striped, hover }}>
@@ -397,7 +399,7 @@ function Filter({
             <>
               {typeof fromToNumber?.[0] === "undefined" ||
               fromToNumber?.[0] === ""
-                ? "0"
+                ? "-∞"
                 : fromToNumber?.[0]}
               {" to "}
               {typeof fromToNumber?.[1] === "undefined" ||
