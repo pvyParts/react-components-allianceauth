@@ -6,9 +6,8 @@ import {
   ButtonToolbar,
   OverlayTrigger,
   ButtonGroup,
-  Glyphicon,
-  MenuItem,
   SplitButton,
+  Dropdown,
   Table,
   Popover,
 } from "react-bootstrap";
@@ -17,8 +16,6 @@ import {
   Column,
   Table as ReactTable,
   useReactTable,
-  useGlobalFilter,
-  useAsyncDebounce,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
@@ -97,7 +94,6 @@ const BaseTable = ({
   if (isLoading)
     return (
       <>
-        <hr />
         <PanelLoader title="Loading Data" message="Please Wait" />
       </>
     );
@@ -105,7 +101,6 @@ const BaseTable = ({
   if (error)
     return (
       <>
-        <hr />
         <ErrorLoader
           title={"Error Loading from API"}
           message={"Try Again Later"}
@@ -155,38 +150,27 @@ function _baseTable({
                         <div
                           {...{
                             className: header.column.getCanSort()
-                              ? "cursor-pointer select-none"
-                              : "",
+                              ? "d-flex align-items-center cursor-pointer select-none"
+                              : "d-flex align-items-center",
                             onClick: header.column.getToggleSortingHandler(),
                           }}
                         >
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
                           {header.column.getCanSort() ? (
-                            <>
+                            <div>
                               {{
-                                asc: (
-                                  <Glyphicon
-                                    className="pull-right"
-                                    glyph="sort-by-attributes"
-                                  />
-                                ),
-                                desc: (
-                                  <Glyphicon
-                                    className="pull-right"
-                                    glyph="sort-by-attributes-alt"
-                                  />
-                                ),
+                                asc: <i className="fas fa-sort-down fa-fw"></i>,
+                                desc: <i className="fas fa-sort-up fa-fw"></i>,
                               }[header.column.getIsSorted() as string] ?? (
-                                <Glyphicon
-                                  className="pull-right"
-                                  glyph="sort"
-                                />
+                                <i className="fas fa-sort fa-fw"></i>
                               )}
-                            </>
+                            </div>
                           ) : null}
+                          <div>
+                            {flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                          </div>
                         </div>
                       )}
                     </th>
@@ -230,65 +214,7 @@ function _baseTable({
           })}
         </tbody>
       </Table>
-      <div className="pagination pull-right">
-        <ButtonToolbar>
-          <ButtonGroup>
-            <Button
-              bsStyle="success"
-              onClick={() => table.setPageIndex(0)}
-              disabled={!table.getCanPreviousPage()}
-            >
-              <Glyphicon glyph="step-backward" />
-            </Button>{" "}
-            <Button
-              bsStyle="success"
-              onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}
-            >
-              <Glyphicon glyph="triangle-left" />
-            </Button>{" "}
-            <Button
-              bsStyle="success"
-              onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}
-            >
-              <Glyphicon glyph="triangle-right" />
-            </Button>{" "}
-            <Button
-              bsStyle="success"
-              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-              disabled={!table.getCanNextPage()}
-            >
-              <Glyphicon glyph="step-forward" />
-            </Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button active bsStyle="success">
-              {"Page Size:"}
-            </Button>{" "}
-            <SplitButton
-              id="pageSizeDropdown"
-              bsStyle="success"
-              title={table.getState().pagination.pageSize}
-            >
-              {[10, 50, 100, 1000000].map((_pageSize) => (
-                <MenuItem
-                  id={_pageSize}
-                  key={_pageSize}
-                  eventKey={_pageSize}
-                  value={_pageSize}
-                  onSelect={(eventKey: any, event: Object) => {
-                    table.setPageSize(Number(eventKey));
-                  }}
-                >
-                  Show {_pageSize}
-                </MenuItem>
-              ))}
-            </SplitButton>
-          </ButtonGroup>
-        </ButtonToolbar>
-      </div>
-      <div className="pagination pull-left">
+      <div className="d-flex justify-content-between">
         <ButtonGroup>
           <Button active bsStyle="info">
             {
@@ -302,13 +228,10 @@ function _baseTable({
             <OverlayTrigger
               placement="bottom"
               trigger="focus"
-              overlay={MyTooltip({ message: "Refreshing Data" })}
+              overlay={MyTooltip("Refreshing Data")}
             >
               <Button bsStyle="info">
-                <Glyphicon
-                  className={tableStyles.glyphiconRefreshAnimate}
-                  glyph="refresh"
-                />
+                <i className={tableStyles.refreshAnimate + " fas fa-sync"}></i>
               </Button>
             </OverlayTrigger>
           ) : (
@@ -318,11 +241,68 @@ function _baseTable({
               overlay={MyTooltip("Data Loaded: " + new Date().toLocaleString())}
             >
               <Button bsStyle="info">
-                <Glyphicon glyph="ok" />
+                <i className="far fa-check-circle"></i>
               </Button>
             </OverlayTrigger>
           )}
         </ButtonGroup>
+
+        <ButtonToolbar>
+          <ButtonGroup>
+            <Button
+              bsStyle="success"
+              onClick={() => table.setPageIndex(0)}
+              disabled={!table.getCanPreviousPage()}
+            >
+              <i className="fas fa-angle-double-left"></i>
+            </Button>{" "}
+            <Button
+              bsStyle="success"
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              <i className="fas fa-caret-left"></i>
+            </Button>{" "}
+            <Button
+              bsStyle="success"
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              <i className="fas fa-caret-right"></i>
+            </Button>{" "}
+            <Button
+              bsStyle="success"
+              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+              disabled={!table.getCanNextPage()}
+            >
+              <i className="fas fa-angle-double-right"></i>
+            </Button>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button active bsStyle="success">
+              {"Page Size:"}
+            </Button>{" "}
+            <SplitButton
+              id="pageSizeDropdown"
+              bsStyle="success"
+              title={table.getState().pagination.pageSize}
+            >
+              {[10, 50, 100, 1000000].map((_pageSize) => (
+                <Dropdown.Item
+                  id={_pageSize}
+                  key={_pageSize}
+                  eventKey={_pageSize}
+                  value={_pageSize}
+                  onSelect={(eventKey: any, event: Object) => {
+                    table.setPageSize(Number(eventKey));
+                  }}
+                >
+                  Show {_pageSize}
+                </Dropdown.Item>
+              ))}
+            </SplitButton>
+          </ButtonGroup>
+        </ButtonToolbar>
       </div>
       {debugTable && (
         <div className="col-xs-12">
