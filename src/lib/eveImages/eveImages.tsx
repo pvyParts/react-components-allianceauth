@@ -3,11 +3,12 @@ import { Image } from "react-bootstrap";
 
 type Sizes = 32 | 64 | 128 | 256 | 512;
 
-export interface CharacterPortraitProps extends Partial<HTMLElement> {
+export interface CharacterPortraitProps extends Partial<Element> {
   character_id?: number;
   size: Sizes;
   height?: number;
   width?: number;
+  style?: Partial<React.CSSProperties>;
 }
 
 export const CharacterPortrait = (props: CharacterPortraitProps) => {
@@ -21,11 +22,12 @@ export const CharacterPortrait = (props: CharacterPortraitProps) => {
   );
 };
 
-export interface CorporationLogoProps extends Partial<HTMLElement> {
+export interface CorporationLogoProps extends Partial<Element> {
   corporation_id?: number;
   size: Sizes;
   height?: number;
   width?: number;
+  style?: Partial<React.CSSProperties>;
 }
 
 export const CorporationLogo = (props: CorporationLogoProps) => {
@@ -39,11 +41,12 @@ export const CorporationLogo = (props: CorporationLogoProps) => {
   );
 };
 
-export interface AllianceLogoProps extends Partial<HTMLElement> {
+export interface AllianceLogoProps extends Partial<Element> {
   alliance_id?: number;
   size: Sizes;
   height?: number;
   width?: number;
+  style?: Partial<React.CSSProperties>;
 }
 
 export const AllianceLogo = (props: AllianceLogoProps) => {
@@ -57,11 +60,12 @@ export const AllianceLogo = (props: AllianceLogoProps) => {
   );
 };
 
-export interface TypeIconProps extends Partial<HTMLElement> {
+export interface TypeIconProps extends Partial<Element> {
   type_id?: number;
   size: Sizes;
   height?: number;
   width?: number;
+  style?: Partial<React.CSSProperties>;
 }
 
 export const TypeIcon = (props: TypeIconProps) => {
@@ -77,7 +81,7 @@ export const TypeIcon = (props: TypeIconProps) => {
   );
 };
 
-export interface PortraitProps extends Partial<HTMLElement> {
+export interface PortraitProps extends Partial<Element> {
   character: {
     character_id: number;
     corporation_id: number;
@@ -86,6 +90,7 @@ export interface PortraitProps extends Partial<HTMLElement> {
   };
   size: number;
   rounded_images?: boolean;
+  style?: Partial<React.CSSProperties>;
 }
 
 export const CharacterAllegiancePortrait = (props: PortraitProps) => {
