@@ -317,13 +317,13 @@ function _baseTable({
     </>
   );
 }
-function Filter({
+const Filter = ({
   column,
   table,
 }: {
   column: Column<any, any>;
   table: ReactTable<any>;
-}) {
+}) => {
   const [input, setInput] = useState("");
 
   const firstValue: any = table
@@ -483,7 +483,7 @@ function Filter({
       />
     );
   }
-}
+};
 
 // export all the base table modules
 
