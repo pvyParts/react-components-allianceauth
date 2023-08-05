@@ -28,6 +28,8 @@ import {
   SortingTableState,
   VisibilityTableState,
   PaginationInitialTableState,
+  Header,
+  HeaderGroup,
 } from "@tanstack/react-table";
 
 import { ErrorLoader, PanelLoader } from "../loaders/loaders";
@@ -51,29 +53,33 @@ type tableInitialState = SortingTableState &
   PaginationInitialTableState;
 
 export interface BaseTableProps extends Partial<HTMLElement> {
-  isLoading: boolean;
-  isFetching: boolean;
-  debugTable: boolean;
-  striped: boolean;
-  data: any;
-  error: boolean;
-  hover: boolean;
-  columns: ColumnDef<any, any>;
+  isLoading?: boolean;
+  isFetching?: boolean;
+  debugTable?: boolean;
+  striped?: boolean;
+  data?: any;
+  error?: boolean;
+  hover?: boolean;
+  columns: ColumnDef<any, any>[];
   asyncExpandFunction?: any;
-  initialState: tableInitialState;
+  initialState?: tableInitialState;
+}
+
+interface _BaseTableProps extends BaseTableProps {
+  table: ReactTable<any>;
 }
 
 const BaseTable = ({
-  isLoading,
-  isFetching,
-  debugTable,
-  data,
-  error,
+  isLoading = false,
+  isFetching = false,
+  debugTable = false,
+  data = [],
+  error = false,
   columns,
-  asyncExpandFunction,
-  striped,
-  hover,
-  initialState = {},
+  asyncExpandFunction = undefined,
+  striped = false,
+  hover = false,
+  initialState = undefined,
 }: BaseTableProps) => {
   const table = useReactTable({
     data,
@@ -127,23 +133,20 @@ function _baseTable({
   table,
   data,
   columns,
-  isFetching,
+  isFetching = false,
   striped = false,
   hover = false,
   debugTable = false,
-  initialState = {},
-}: {
-  data: any[];
-  columns: ColumnDef<any>[];
-}) {
+  initialState = undefined,
+}: _BaseTableProps) {
   return (
     <>
       <Table {...{ striped, hover }}>
         <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
+          {table.getHeaderGroups().map((headerGroup: HeaderGroup<any>) => (
             <>
               <tr key={`name-${headerGroup.id}`}>
-                {headerGroup.headers.map((header) => {
+                {headerGroup.headers.map((header: Header<any, any>) => {
                   return (
                     <th key={header.id} colSpan={header.colSpan}>
                       {header.isPlaceholder ? null : (
@@ -216,7 +219,7 @@ function _baseTable({
       </Table>
       <div className="d-flex justify-content-between">
         <ButtonGroup>
-          <Button active bsStyle="info">
+          <Button active variant="info">
             {
               <>
                 {table.getState().pagination.pageIndex + 1} of{" "}
@@ -230,7 +233,7 @@ function _baseTable({
               trigger="focus"
               overlay={MyTooltip("Refreshing Data")}
             >
-              <Button bsStyle="info">
+              <Button variant="info">
                 <i className={tableStyles.refreshAnimate + " fas fa-sync"}></i>
               </Button>
             </OverlayTrigger>
@@ -240,7 +243,7 @@ function _baseTable({
               trigger="focus"
               overlay={MyTooltip("Data Loaded: " + new Date().toLocaleString())}
             >
-              <Button bsStyle="info">
+              <Button variant="info">
                 <i className="far fa-check-circle"></i>
               </Button>
             </OverlayTrigger>
@@ -250,41 +253,42 @@ function _baseTable({
         <ButtonToolbar>
           <ButtonGroup>
             <Button
-              bsStyle="success"
+              variant="success"
               onClick={() => table.setPageIndex(0)}
               disabled={!table.getCanPreviousPage()}
             >
               <i className="fas fa-angle-double-left"></i>
             </Button>{" "}
             <Button
-              bsStyle="success"
+              variant="success"
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
               <i className="fas fa-caret-left"></i>
             </Button>{" "}
             <Button
-              bsStyle="success"
+              variant="success"
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
             >
               <i className="fas fa-caret-right"></i>
-            </Button>{" "}
+            </Button>
             <Button
-              bsStyle="success"
+              variant="success"
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
               disabled={!table.getCanNextPage()}
             >
               <i className="fas fa-angle-double-right"></i>
             </Button>
           </ButtonGroup>
-          <ButtonGroup>
-            <Button active bsStyle="success">
+
+          <ButtonGroup className="ms-1">
+            <Button active variant="success">
               {"Page Size:"}
             </Button>{" "}
             <SplitButton
               id="pageSizeDropdown"
-              bsStyle="success"
+              variant="success"
               title={table.getState().pagination.pageSize}
             >
               {[10, 50, 100, 1000000].map((_pageSize) => (
@@ -373,7 +377,7 @@ function Filter({
         <ButtonGroup style={{ display: "flex", width: "100%" }}>
           <Button
             className={tableStyles.filterBtn + " btn-block"}
-            bsStyle="primary"
+            variant="primary"
             bsSize="small"
           >
             <>
@@ -390,8 +394,8 @@ function Filter({
           </Button>
           <Button
             className={tableStyles.filterToggle}
-            bsStyle="primary"
-            bsSize="small"
+            variant="primary"
+            size="sm"
           >
             <svg
               height="20"

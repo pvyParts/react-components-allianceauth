@@ -93,8 +93,8 @@ export const CharacterAllegiancePortrait = (props: PortraitProps) => {
   return (
     <div
       style={{
-        height: [`${props.size}px`],
-        width: [`${props.size}px`],
+        height: `${props.size}px`,
+        width: `${props.size}px`,
         position: "relative",
       }}
     >
