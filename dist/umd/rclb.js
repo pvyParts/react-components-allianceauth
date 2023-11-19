@@ -102,25 +102,6 @@
         return React__default["default"].createElement(reactBootstrap.Tooltip, { id: "character_tooltip" }, message);
     }
     const BaseTable = ({ isLoading, isFetching, debugTable, data, error, columns, asyncExpandFunction, striped, hover, initialState = {}, }) => {
-        if (isLoading)
-            return (React__default["default"].createElement(React__default["default"].Fragment, null,
-                React__default["default"].createElement("hr", null),
-                React__default["default"].createElement(PanelLoader, { title: "Loading Data", message: "Please Wait" })));
-        if (error)
-            return (React__default["default"].createElement(React__default["default"].Fragment, null,
-                React__default["default"].createElement("hr", null),
-                React__default["default"].createElement(ErrorLoader, { title: "Error Loading from API", message: "Try Again Later" })));
-        return (React__default["default"].createElement(_baseTable, { ...{
-                data,
-                columns,
-                isFetching,
-                debugTable,
-                initialState,
-                striped,
-                hover,
-            } }));
-    };
-    function _baseTable({ data, columns, isFetching, striped = false, hover = false, debugTable = false, initialState = {}, }) {
         const table = reactTable.useReactTable({
             data,
             columns,
@@ -136,6 +117,26 @@
             debugTable: debugTable,
             state: initialState,
         });
+        if (isLoading)
+            return (React__default["default"].createElement(React__default["default"].Fragment, null,
+                React__default["default"].createElement("hr", null),
+                React__default["default"].createElement(PanelLoader, { title: "Loading Data", message: "Please Wait" })));
+        if (error)
+            return (React__default["default"].createElement(React__default["default"].Fragment, null,
+                React__default["default"].createElement("hr", null),
+                React__default["default"].createElement(ErrorLoader, { title: "Error Loading from API", message: "Try Again Later" })));
+        return (React__default["default"].createElement(_baseTable, { ...{
+                table,
+                data,
+                columns,
+                isFetching,
+                debugTable,
+                initialState,
+                striped,
+                hover,
+            } }));
+    };
+    function _baseTable({ table, data, columns, isFetching, striped = false, hover = false, debugTable = false, initialState = {}, }) {
         return (React__default["default"].createElement(React__default["default"].Fragment, null,
             React__default["default"].createElement(reactBootstrap.Table, { ...{ striped, hover } },
                 React__default["default"].createElement("thead", null, table.getHeaderGroups().map((headerGroup) => (React__default["default"].createElement(React__default["default"].Fragment, null,
@@ -221,9 +222,20 @@
                     e.target.value,
                 ]), placeholder: `Max`, className: "form-control" })));
         if (typeof firstValue === "number") {
+            let fromToNumber = columnFilterValue;
             return (React__default["default"].createElement(reactBootstrap.OverlayTrigger, { trigger: "click", placement: "bottom", overlay: popoverNumber },
-                React__default["default"].createElement(reactBootstrap.ButtonGroup, { style: { display: "flex" } },
-                    React__default["default"].createElement(reactBootstrap.Button, { className: tableStyles.filterBtn, bsStyle: "primary", bsSize: "small" }, `Range`),
+                React__default["default"].createElement(reactBootstrap.ButtonGroup, { style: { display: "flex", width: "100%" } },
+                    React__default["default"].createElement(reactBootstrap.Button, { className: tableStyles.filterBtn + " btn-block", bsStyle: "primary", bsSize: "small" },
+                        React__default["default"].createElement(React__default["default"].Fragment, null,
+                            typeof fromToNumber?.[0] === "undefined" ||
+                                fromToNumber?.[0] === ""
+                                ? "-∞"
+                                : fromToNumber?.[0],
+                            " to ",
+                            typeof fromToNumber?.[1] === "undefined" ||
+                                fromToNumber?.[1] === ""
+                                ? "∞"
+                                : fromToNumber?.[1])),
                     React__default["default"].createElement(reactBootstrap.Button, { className: tableStyles.filterToggle, bsStyle: "primary", bsSize: "small" },
                         React__default["default"].createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20", "aria-hidden": "true", focusable: "false" },
                             React__default["default"].createElement("path", { d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" }))))));
