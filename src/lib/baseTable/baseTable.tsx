@@ -17,8 +17,6 @@ import {
   Column,
   Table as ReactTable,
   useReactTable,
-  useGlobalFilter,
-  useAsyncDebounce,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
@@ -465,10 +463,9 @@ function Filter({
       />
     );
   } else {
-    const sortedUniqueValues = React.useMemo(
-      () => Array.from(column.getFacetedUniqueValues().keys()).sort(),
-      [column.getFacetedUniqueValues(), firstValue]
-    );
+    const sortedUniqueValues = Array.from(
+      column.getFacetedUniqueValues().keys()
+    ).sort();
 
     const selectOptions = sortedUniqueValues
       .slice(0, 50)
