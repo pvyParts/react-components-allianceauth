@@ -62,6 +62,7 @@ export interface BaseTableProps extends Partial<HTMLElement> {
   columns: ColumnDef<any, any>;
   asyncExpandFunction?: any;
   initialState: tableInitialState;
+  rowClasses: Function;
 }
 
 const BaseTable = ({
@@ -75,6 +76,9 @@ const BaseTable = ({
   striped,
   hover,
   initialState = {},
+  rowClasses = (row) => {
+    return "";
+  },
 }: BaseTableProps) => {
   const table = useReactTable({
     data,
@@ -121,6 +125,7 @@ const BaseTable = ({
         initialState,
         striped,
         hover,
+        rowClasses,
       }}
     />
   );
@@ -135,6 +140,9 @@ function _baseTable({
   hover = false,
   debugTable = false,
   initialState = {},
+  rowClasses = (row: any) => {
+    return "";
+  },
 }: {
   data: any[];
   columns: ColumnDef<any>[];
@@ -212,7 +220,7 @@ function _baseTable({
         <tbody>
           {table.getRowModel().rows.map((row) => {
             return (
-              <tr key={row.id}>
+              <tr key={row.id} className={rowClasses(row.original)}>
                 {row.getVisibleCells().map((cell) => {
                   return (
                     <td key={cell.id} style={{ verticalAlign: "middle" }}>

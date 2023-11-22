@@ -20,7 +20,7 @@ for (let i = 0; i < 50; i++) {
     postCode: faker.address.zipCode(),
     city: faker.address.cityName(),
     country: faker.address.country(),
-    number: faker.datatype.number(9999999),
+    number: faker.datatype.number(2000),
     bool: faker.datatype.boolean(),
     favouriteQuote: faker.lorem.sentence(),
     htmltest: `<p><strong>${faker.lorem.sentence()}</strong></p>`,
@@ -91,12 +91,23 @@ const Template: ComponentStory<typeof BaseTable> = (args) => {
   );
   delete args.data;
   delete args.columns;
-  return <BaseTable columns={cols} data={data} {...args} />;
+
+  const rowClasses = (row) => {
+    if (row.number > 1000) {
+      return "info";
+    } else if (row.number > 500) {
+      return "warning";
+    }
+  };
+  return (
+    <BaseTable columns={cols} data={data} rowClasses={rowClasses} {...args} />
+  );
 };
 
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
+  rowClasses: undefined,
   isLoading: false,
   isFetching: false,
   debugTable: false,
@@ -111,6 +122,7 @@ Default.parameters = {
 export const Long = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Long.args = {
+  rowClasses: undefined,
   isLoading: false,
   isFetching: false,
   debugTable: false,
@@ -131,6 +143,7 @@ Long.parameters = {
 export const Sorted = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Sorted.args = {
+  rowClasses: undefined,
   isLoading: false,
   isFetching: false,
   debugTable: false,
@@ -153,6 +166,7 @@ Sorted.parameters = {
 export const Visibility = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Visibility.args = {
+  rowClasses: undefined,
   isLoading: false,
   isFetching: false,
   debugTable: false,
@@ -173,6 +187,7 @@ Visibility.parameters = {
 export const OnlyNumbers = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 OnlyNumbers.args = {
+  rowClasses: undefined,
   isLoading: false,
   isFetching: false,
   debugTable: false,
